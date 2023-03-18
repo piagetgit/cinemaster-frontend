@@ -1,0 +1,11 @@
+:host {
+    grid-row-start: v-center-top;
+    grid-row-end: footer;
+    grid-column-start: left-col;
+    grid-column-end: h-center;
+    background-color: rgb(222, 164, 164);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+  }
