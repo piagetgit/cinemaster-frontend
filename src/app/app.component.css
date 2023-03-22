@@ -5,6 +5,6 @@
     margin: 0px;
     padding: 0px;
     display: grid;
-    grid-template-columns: [left-col] 300px [h-center] auto [end];
+    grid-template-columns: [left-col] 200px [h-center] auto [h2-center] 150px [end];
     grid-template-rows: [top-bar] 100px [v-center-top] 6fr [v-center-bot] 4fr [footer] 40px [end];
   }

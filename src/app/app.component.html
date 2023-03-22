@@ -1,4 +1,15 @@
 <app-header></app-header>
-<app-film-collection></app-film-collection>
-<app-menu></app-menu>
+
+    <app-menu *ngIf="view !=='signin'"></app-menu>
+    <!--<app-user-profile
+                      *ngIf="view === 'profile'">
+    </app-user-profile>
+    <app-new-collectible
+      *ngIf="view === 'collection'">
+    </app-new-collectible>-->
+
+
+    <app-film-collection *ngIf="view==='home'"></app-film-collection>
+    <app-sign-in *ngIf="view==='signin'"></app-sign-in>
+    <!--app-menu></app-menu>-->
 <app-footer></app-footer>
