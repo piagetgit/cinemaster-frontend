@@ -6,6 +6,8 @@ import { lastValueFrom } from 'rxjs';
     providedIn: 'root'
 })
 export class AppStateService {
+    basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    userIsLogged:string;
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
@@ -15,17 +17,17 @@ export class AppStateService {
         this._currentView = "home";
         this.observers = {};
         this.observers["view"] = [];
+        this.observers["login"] = [];
+        this.userIsLogged="";
     }
 
     observe(evento: string, callback: (e: string) => void ) {
-        console.log("0");
         if (this.observers.hasOwnProperty(evento)) {
           this.observers[evento].push(callback);
         }
     }
 
     changeView(view:string){
-        console.log("2");
         for (let callback of this.observers["view"]) {
             callback(view);
         }
@@ -37,6 +39,26 @@ export class AppStateService {
 
     set currentView(view:string) {
         this._currentView=view;
+    }
+
+    login() {
+        const headers = new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        });
+        const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
+        this.http.post<string>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers }).subscribe(data => {
+            console.log(data);
+            if(String(data)=="true"){
+                console.log(data);
+                for (let callback of this.observers["login"])
+                    callback("userId");
+                for (let callback of this.observers["view"]) {
+                     callback('home');
+                }
+            }
+        });
+
     }
 
 }

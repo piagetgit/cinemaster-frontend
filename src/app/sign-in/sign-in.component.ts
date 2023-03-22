@@ -1,3 +1,4 @@
+import { AppStateService } from './../app-state.service';
 import { AppService } from './../app.service';
 import { Component } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,14 +15,14 @@ export class SignInComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private appLoginService: AppService) {
+  constructor(private appLoginService: AppService,private appStateService:AppStateService) {
 
   }
 
   signin(event:Event) {
     event.preventDefault();
     console.log(this.email + " " + this.password)
-    this.appLoginService.login();
+    this.appStateService.login();
     
   }
 

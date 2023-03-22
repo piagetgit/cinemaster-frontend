@@ -11,9 +11,11 @@ const MaterialComponents = [MatButtonModule];
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
+  userIsLogged!:string
 
   constructor(private appStateService:AppStateService){
-
+    
+    
   }
 
   changeViewToSignin(event:Event){
@@ -25,6 +27,10 @@ export class HeaderComponent implements OnInit{
   ngOnInit() {
     this.appStateService.observe("view", (view: string) => {
       this.appStateService.currentView=view;
-    })
+    });
+    this.appStateService.observe("login", (userId: string) => {
+      this.userIsLogged = userId;
+    });
+    this.userIsLogged=this.appStateService.userIsLogged;
   }
 }

@@ -32,19 +32,6 @@ export class AppService {
     }
 
 
-    login() {
-
-        const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
-        });
-        const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
-        this.http.post<any>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers }).subscribe(data => {
-            //console.log(data);
-        });
-
-    }
-
     loadFilm(): FilmInfoI[] {
         let film: any[] = [];
         const headers = new HttpHeaders({
