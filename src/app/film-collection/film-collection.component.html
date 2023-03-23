@@ -1,4 +1,4 @@
-<h2 class="collection-title">Film</h2>
+<h2 class="collection-title"><i class="fas fa-video" style="color: #ccc62e;"></i>&nbsp;&nbsp;Film attualmente in sala&nbsp;&nbsp;<i class="fas fa-video fa-rotate-180" style="color: #ccc62e;"></i></h2>
 
 <section class="cards">
     <ng-container *ngFor="let film of films, let pos = index">
@@ -12,8 +12,8 @@
                     {{film.descrizione}}
                 </p>
                 <div class="card__info">
-                    <p class="text--medium"> {{film.durata}} Min</p>
-                    <p class="card__price text--medium">  {{film.prezzo}} €</p>
+                    <p class="text--medium"><i class="far fa-clock"></i>&nbsp; {{film.durata}} Min</p>
+                    <p class="card__price text--medium"><i class="fas fa-tag"></i>&nbsp;  {{film.prezzo}} €</p>
                 </div>
             </div>
         </div>

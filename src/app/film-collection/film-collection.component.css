@@ -2,8 +2,8 @@
     grid-row-start: v-center-top;
     grid-row-end: footer;
     grid-column-start: h-center;
-    grid-column-end: end;    
-    background-color: rgb(182, 51, 51);
+    grid-column-end: end;
+    background-color: rgb(2, 2, 61);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
   }
   /*.collection-content {
     max-width: 800px;
-   
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: min-content;
@@ -25,11 +25,12 @@
 }*/
 
 .collection-title {
-    background-color: rgb(200, 200, 200);
+  font-family: "Bradley Hand ITC";
+    background-color: rgb(9, 26, 82);
     text-align: center;
-    font-size: 2rem;
-    font-weight: normal;
-    color: rgb(40, 40, 40);
+    font-size: 3rem;
+    font-weight: bolder;
+    color: rgb(232, 229, 2);
     margin: 10px;
     padding: 10px;
     align-self: stretch;
@@ -70,7 +71,7 @@
   overflow: scroll;
   margin: 40px;
   margin-top: 20px;
-  
+
 }
 .cards::-webkit-scrollbar {
   display: none;
