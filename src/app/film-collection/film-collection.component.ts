@@ -1,4 +1,4 @@
-import { AppService } from './../app.service';
+import { AppService } from '../services/app.service';
 import { Component, OnInit } from '@angular/core';
 import { FilmInfoI } from '../interface/film';
 
@@ -17,7 +17,6 @@ export class FilmCollectionComponent implements OnInit{
   ngOnInit() {
     this.appService.films.then((films)=>{
       this.films=films; 
-      console.log(this.films[0].descrizione)
     });
   }
   

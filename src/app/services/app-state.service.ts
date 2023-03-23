@@ -41,24 +41,28 @@ export class AppStateService {
         this._currentView=view;
     }
 
-    login() {
+    login():boolean {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
-        const body = { id: 'genio@cmail.it', logPassword: 'gndllamp' };
+
+        let res = true;
+        const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
         this.http.post<string>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers }).subscribe(data => {
-            console.log(data);
             if(String(data)=="true"){
-                console.log(data);
+                
                 for (let callback of this.observers["login"])
                     callback("userId");
                 for (let callback of this.observers["view"]) {
                      callback('home');
                 }
+                console.log(data)
+                this.userIsLogged="userId";
             }
         });
-
+        console.log("ecco1 "+ this.userIsLogged);
+        return true;
     }
 
 }

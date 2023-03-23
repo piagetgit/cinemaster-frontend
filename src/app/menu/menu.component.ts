@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import {AppStateService} from "../app-state.service";
+import { AppStateService } from '../services/app-state.service';
 
 @Component({
   selector: 'app-menu',

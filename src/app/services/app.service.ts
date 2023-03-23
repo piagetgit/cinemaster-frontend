@@ -1,4 +1,4 @@
-import { FilmInfoI } from './interface/film';
+import { FilmInfoI } from '../interface/film';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
@@ -30,7 +30,6 @@ export class AppService {
             return result;
           })
     }
-
 
     loadFilm(): FilmInfoI[] {
         let film: any[] = [];
