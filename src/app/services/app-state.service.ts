@@ -1,3 +1,4 @@
+import { UserInfoI } from './../interface/userLoginResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
@@ -7,7 +8,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AppStateService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    userIsLogged:string;
+    userIsLogged!: UserInfoI;
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
@@ -18,16 +19,16 @@ export class AppStateService {
         this.observers = {};
         this.observers["view"] = [];
         this.observers["login"] = [];
-        this.userIsLogged="";
     }
 
-    observe(evento: string, callback: (e: string) => void ) {
+    observe(evento: string, callback: (e: string) => void) {
         if (this.observers.hasOwnProperty(evento)) {
-          this.observers[evento].push(callback);
+            this.observers[evento].push(callback);
         }
     }
 
-    changeView(view:string){
+    changeView(view: string) {
+
         for (let callback of this.observers["view"]) {
             callback(view);
         }
@@ -37,32 +38,47 @@ export class AppStateService {
         return this._currentView;
     }
 
-    set currentView(view:string) {
-        this._currentView=view;
+    set currentView(view: string) {
+        this._currentView = view;
     }
 
-    login():boolean {
+    login() {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        let res = true;
         const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
-        this.http.post<string>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers }).subscribe(data => {
-            if(String(data)=="true"){
-                
-                for (let callback of this.observers["login"])
-                    callback("userId");
-                for (let callback of this.observers["view"]) {
-                     callback('home');
-                }
-                console.log(data)
-                this.userIsLogged="userId";
+        return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
+
+        /*(data => {
+                this.userIsLogged={
+                    email:data.email,
+                    cognome:data.cognome,
+                    dataNascita:data.dataNascita,
+                    id:data.id,
+                    nome:data.nome
+                };
             }
         });
         console.log("ecco1 "+ this.userIsLogged);
-        return true;
+
+        if(data!==null){
+            for (let callback of this.observers["login"])
+                callback("userId");
+            for (let callback of this.observers["view"]) {
+                 callback('home');
+            }
+        }
+        return true;*/
+
+    }
+    updateView(id:string) {
+        for (let callback of this.observers["login"])
+            callback(id);
+        for (let callback of this.observers["view"]) {
+            callback('home');
+        }
     }
 
 }

@@ -3,5 +3,9 @@
 <div class="user-logins">
     <button *ngIf="userIsLogged.length===0" mat-raised-button color="primary" (click)="changeViewToSignin($event)">SignIn</button>
     <button *ngIf="userIsLogged.length===0" mat-raised-button color="primary">SignUp</button>
+    <div *ngIf="userIsLogged.length>0">
+        <span  class="material-icons-outlined">  {{userIsLogged}}    </span>
+    </div>
+    
     <button *ngIf="userIsLogged.length>0" mat-raised-button color="primary">LogOut</button>
 </div>

@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
+import { UserInfoI } from '../interface/userLoginResponse';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,22 +16,39 @@ export class SignInComponent {
 
   email: string = '';
   password: string = '';
-
-  constructor(private appLoginService: AppService,private appStateService:AppStateService,private toast:NgToastService) {
+  userlogged!: UserInfoI;
+  constructor(private appLoginService: AppService, private appStateService: AppStateService, private toast: NgToastService) {
 
   }
 
-  signin(event:Event) {
+  signin(event: Event) {
     event.preventDefault();
     console.log(this.email + " " + this.password)
-    if(this.appStateService.login()){
-      this.openOnSuccessLogin();
-    }
-    
+    this.appStateService.login().subscribe((data: UserInfoI | null) => {
+      if (data !== null) {
+        this.userlogged = {
+          email: data?.email,
+          cognome: data.cognome,
+          dataNascita: data.dataNascita,
+          id: data.id,
+          nome: data.nome
+        }
+        this.appStateService.updateView(this.userlogged.cognome);
+        this.openOnSuccessLogin();
+      }
+      else {
+        this.openOnFailLogin();
+      }
+     
+
+    })
   }
 
-  openOnSuccessLogin(){
-    this.toast.success({detail:'success',summary:'Login Success',position:'tr', duration:5000});
+  openOnSuccessLogin() {
+    this.toast.success({ detail: 'success', summary: 'Login Success', position: 'tr', duration: 1000 });
+  }
+  openOnFailLogin() {
+    this.toast.error({ detail: 'Error', summary: 'Check your email and Password', position: 'tr', duration: 1000 });
   }
 
   updateEmail(event: Event) {

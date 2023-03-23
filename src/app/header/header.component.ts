@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit{
     this.appStateService.observe("login", (userId: string) => {
       this.userIsLogged = userId;
     });
-    this.userIsLogged=this.appStateService.userIsLogged;
+    /*if(this.appStateService.userIsLogged!==undefined || this.appStateService.userIsLogged!==null)
+      this.userIsLogged=this.appStateService.userIsLogged.email;
+    else*/
+      this.userIsLogged="";
   }
 }
