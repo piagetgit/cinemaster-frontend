@@ -112,7 +112,15 @@
 .card__title {
   margin-bottom: 20px;
 }
-
+.card__cat {
+  margin-bottom: 20px;
+  background-color: #ccc62e;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
 .card__info {
   display: flex;
   align-self: end;
