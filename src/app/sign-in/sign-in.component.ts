@@ -28,7 +28,7 @@ export class SignInComponent {
     this.appStateService.login().subscribe((data: UserInfoI | null) => {
       if (data !== null) {
         this.userlogged = {
-          email: data?.email,
+          email: data.email,
           cognome: data.cognome,
           dataNascita: data.dataNascita,
           id: data.id,
@@ -40,7 +40,7 @@ export class SignInComponent {
       else {
         this.openOnFailLogin();
       }
-     
+
 
     })
   }
