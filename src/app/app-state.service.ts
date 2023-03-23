@@ -11,7 +11,7 @@ export class AppStateService {
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
-   
+
 
     constructor(private http: HttpClient) {
         this._currentView = "home";
@@ -46,7 +46,7 @@ export class AppStateService {
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
-        const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
+        const body = { id: 'genio@cmail.it', logPassword: 'gndllamp' };
         this.http.post<string>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers }).subscribe(data => {
             console.log(data);
             if(String(data)=="true"){
