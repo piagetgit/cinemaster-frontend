@@ -14,7 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import {NgToastModule} from 'ng-angular-popup';
+import {NgToastModule} from "ng-angular-popup";
 
 @NgModule({
   declarations: [
