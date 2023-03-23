@@ -18,6 +18,8 @@ export class AppComponent {
   ngOnInit() {
     this.appStateService.observe("view", (view: string) => {
       this.view = view;
+      
+      console.log("app"+this.view);
     }
     )
   }

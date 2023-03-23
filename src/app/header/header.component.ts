@@ -10,30 +10,33 @@ const MaterialComponents = [MatButtonModule];
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
-  userIsLogged!:string
+export class HeaderComponent implements OnInit {
+  userLogged!: string
 
-  constructor(private appStateService:AppStateService){
-    
-    
+  constructor(private appStateService: AppStateService) {
+
+
   }
 
-  changeViewToSignin(event:Event){
-   // event.preventDefault();
-    this.appStateService.changeView('signin');
-    
+  changeView(event: Event, view: string) {
+    if (view.length > 0) {
+      this.appStateService.changeView(view);
+    }
+    else {
+      this.appStateService.logout()
+    }
+
   }
 
   ngOnInit() {
     this.appStateService.observe("view", (view: string) => {
-      this.appStateService.currentView=view;
+      this.appStateService.currentView = view;
+      console.log("header" + this.appStateService.currentView);
     });
     this.appStateService.observe("login", (userId: string) => {
-      this.userIsLogged = userId;
+      this.userLogged = userId;
     });
-    /*if(this.appStateService.userIsLogged!==undefined || this.appStateService.userIsLogged!==null)
-      this.userIsLogged=this.appStateService.userIsLogged.email;
-    else*/
-      this.userIsLogged="";
+
+    this.userLogged = "";
   }
 }

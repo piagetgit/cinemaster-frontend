@@ -17,6 +17,7 @@ export class SignInComponent {
   email: string = '';
   password: string = '';
   userlogged!: UserInfoI;
+
   constructor(private appLoginService: AppService, private appStateService: AppStateService, private toast: NgToastService) {
 
   }
@@ -33,7 +34,7 @@ export class SignInComponent {
           id: data.id,
           nome: data.nome
         }
-        this.appStateService.updateView(this.userlogged.cognome);
+        this.appStateService.updateView(this.userlogged.nome);
         this.openOnSuccessLogin();
       }
       else {
@@ -45,10 +46,10 @@ export class SignInComponent {
   }
 
   openOnSuccessLogin() {
-    this.toast.success({ detail: 'success', summary: 'Login Success', position: 'tr', duration: 1000 });
+    this.toast.success({ detail: 'success', summary: 'Login Success', position: 'tr', duration: 2000 });
   }
   openOnFailLogin() {
-    this.toast.error({ detail: 'Error', summary: 'Check your email and Password', position: 'tr', duration: 1000 });
+    this.toast.error({ detail: 'Error', summary: 'Check your email and Password', position: 'tr', duration: 2000 });
   }
 
   updateEmail(event: Event) {

@@ -8,7 +8,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AppStateService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    userIsLogged!: UserInfoI;
+    userIsLogged!: UserInfoI | null;
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
@@ -27,11 +27,18 @@ export class AppStateService {
         }
     }
 
-    changeView(view: string) {
-
+   changeView(view: string) {
         for (let callback of this.observers["view"]) {
             callback(view);
         }
+        console.log(view);
+    }
+
+    logout(){
+        for (let callback of this.observers["login"]) {
+            callback('');
+        }
+        this.userIsLogged= null;
     }
 
     get currentView() {
@@ -50,29 +57,8 @@ export class AppStateService {
 
         const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
-
-        /*(data => {
-                this.userIsLogged={
-                    email:data.email,
-                    cognome:data.cognome,
-                    dataNascita:data.dataNascita,
-                    id:data.id,
-                    nome:data.nome
-                };
-            }
-        });
-        console.log("ecco1 "+ this.userIsLogged);
-
-        if(data!==null){
-            for (let callback of this.observers["login"])
-                callback("userId");
-            for (let callback of this.observers["view"]) {
-                 callback('home');
-            }
-        }
-        return true;*/
-
     }
+    
     updateView(id:string) {
         for (let callback of this.observers["login"])
             callback(id);
