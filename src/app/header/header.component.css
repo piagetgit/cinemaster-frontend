@@ -1,0 +1,43 @@
+:host {
+  grid-row-start: top-bar;
+  grid-row-end: v-center-top;
+  grid-column-start: left-col;
+  grid-column-end: end;
+  background-color: rgb(220, 220, 220);
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-logins {
+  display: flex;
+  gap: 10px;
+  /*margin-left: 300%;*/
+}
+
+/*.user-logins  p, .second-nav  p {
+  background-color: white;
+  border: 1px solid rgb(40,40,40);
+  border-radius: 12px;
+  padding: 10px 15px;
+}
+
+.user-logins a, .second-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-logins > p.selected, .second-nav > p.selected {
+  background-color: rgb(200, 200, 200);
+  border: 1px solid rgb(40,40,40);
+  border-radius: 12px;
+  padding: 10px 15px;
+}*/
+
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-left: 30px;
+}

@@ -1,0 +1,12 @@
+<button [class]="{selected: view === 'home'}"
+        (click)="goTo('home')">
+    Home</button>
+<button [class]="{selected: view === 'user'}"
+        (click)="goTo('user')">
+    Profile</button>
+<button [class]="{selected: view === 'film'}"
+        (click)="goTo('film')">
+    Movies</button>
+<button [class]="{selected: view === 'tickets'}"
+        (click)="goTo('tickets')">
+    Tickets</button>

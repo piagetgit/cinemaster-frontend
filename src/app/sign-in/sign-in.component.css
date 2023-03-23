@@ -1,0 +1,27 @@
+:host {
+    grid-row-start: v-center-top;
+    grid-row-end: v-center-bot;
+    grid-column-start: h-center;
+    grid-column-end: h2-center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-color: #39a0ed;
+    margin-top: 50px;
+    min-width: 200px;
+  }
+
+  .form{
+    margin-top: 30px;
+  }
+  #email{
+    margin-bottom: 20px;
+  }
+
+  #signin{
+    margin-top: 10px;
+  }
+  #password{
+    margin-top: 10px;
+  }

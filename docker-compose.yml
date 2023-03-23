@@ -5,7 +5,8 @@ services:
     container_name: cinemaster-frontend
     ports:
       - 4200:80
-
+    networks:
+      - cinemaster_net
 networks:
-  opnet:
+  cinemaster_net:
     driver: bridge

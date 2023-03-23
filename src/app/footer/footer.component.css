@@ -1,0 +1,9 @@
+:host {
+    grid-row-start: footer;
+    grid-row-end: end;
+    grid-column-start: left-col;
+    grid-column-end: end;
+    /*background-color: rgb(111, 124, 98);*/
+    text-align: right;
+  }
+  
