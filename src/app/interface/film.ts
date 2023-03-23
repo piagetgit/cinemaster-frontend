@@ -7,4 +7,9 @@ export interface FilmInfoI {
   id: number;
   prezzo:number;
   regista:string;
+
+  titolo:string;
+
+  img: string;
+
 }
