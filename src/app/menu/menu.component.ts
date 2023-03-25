@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
     this.userLogged = "";
   }
 
-  goTo(where: "home" | "user" | "film" | "tickets" | "aboutus") {
-    this.appStateService.currentView = where;
+  goTo(where: "home" | "user" | "film" | "tickets" | "presentation") {
+    this.appStateService.changeView(where);
   }
 }

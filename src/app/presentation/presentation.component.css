@@ -1,0 +1,29 @@
+:host {
+  grid-row-start: v-center-top;
+  grid-row-end: footer;
+  grid-column-start: h-center;
+  grid-column-end: end;
+  background-color: navy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  size: letter;
+}
+
+p {
+  margin-top: 20px;
+  color: #fff200;
+}
+
+blockquote > p {
+  margin-top: 5px;
+  font-family: "Book Antiqua";
+  text-align: end;
+}
+
+blockquote > em {
+  color: #fff200;
+}

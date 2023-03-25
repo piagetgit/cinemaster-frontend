@@ -15,6 +15,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import {NgToastModule} from "ng-angular-popup";
+import { PresentationComponent } from './presentation/presentation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgToastModule} from "ng-angular-popup";
     MenuComponent,
     FilmCollectionComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,

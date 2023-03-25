@@ -1,17 +1,17 @@
 <button class="menu_button"
         (click)="goTo('home')"><i class="fas fa-home"></i>
   &nbsp;&nbsp;Home</button>
-<button class="menu_button"
+<button class="menu_button" *ngIf="userLogged.length>0"
         (click)="goTo('user')"><i class="fas fa-user"></i>
   &nbsp;&nbsp;Profile</button>
 <button class="menu_button"
         (click)="goTo('film')"><i class="fas fa-film"></i>
   &nbsp;&nbsp;Movies</button>
-<button class="menu_button"
+<button class="menu_button" *ngIf="userLogged.length>0"
         (click)="goTo('tickets')"><i class="fas fa-ticket-alt"></i>
   &nbsp;&nbsp;Tickets </button>
 <button class="menu_button"
-        (click)="goTo('aboutus')"><i class="fas fa-info-circle"></i>
+        (click)="goTo('presentation')"><i class="fas fa-info-circle"></i>
   &nbsp;&nbsp;About Us </button>
 <!--
 <button
