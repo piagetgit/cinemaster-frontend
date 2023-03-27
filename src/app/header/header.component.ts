@@ -11,10 +11,9 @@ const MaterialComponents = [MatButtonModule];
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userLogged!: string
+  userLogged!: string;
 
   constructor(private appStateService: AppStateService) {
-
 
   }
 
@@ -29,12 +28,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("header  init")
     this.appStateService.observe("view", (view: string) => {
       this.appStateService.currentView = view;
-      console.log("header" + this.appStateService.currentView);
     });
     this.appStateService.observe("login", (userId: string) => {
       this.userLogged = userId;
+      console.log("header: "+this.userLogged);
     });
 
     this.userLogged = "";
