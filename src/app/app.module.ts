@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import {NgToastModule} from "ng-angular-popup";
 import { PresentationComponent } from './presentation/presentation.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PresentationComponent } from './presentation/presentation.component';
     FilmCollectionComponent,
     UserProfileComponent,
     SignInComponent,
-    PresentationComponent
+    PresentationComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ export class AppStateService {
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
+    private _users: Promise<{[id: number]: UserInfoI}>;
 
 
     constructor(private http: HttpClient) {
@@ -19,6 +20,24 @@ export class AppStateService {
         this.observers = {};
         this.observers["view"] = [];
         this.observers["login"] = [];
+
+      const headers = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      });
+
+      const result = this.http.get<UserInfoI[]>(this.basePath + '/users', { headers: headers });
+      const resultAsPromise = lastValueFrom<UserInfoI[]>(result);
+
+
+      this._users = resultAsPromise.then((dati: UserInfoI[]) => {
+        const result: {[id: number]: UserInfoI}= {};
+        for (let user of dati) {
+          result[user.id] = user;
+        }
+        //console.log(result);
+        return result;
+      })
     }
 
     observe(evento: string, callback: (e: string) => void) {
@@ -58,7 +77,7 @@ export class AppStateService {
         const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
     }
-    
+
     updateView(id:string) {
         for (let callback of this.observers["login"])
             callback(id);
@@ -67,4 +86,10 @@ export class AppStateService {
         }
     }
 
+    get users(): Promise<UserInfoI[]> {
+      return this._users.then((dati) => {
+        return Object.values(dati);
+      });
+
+    }
 }

@@ -7,9 +7,9 @@
     <app-new-collectible
       *ngIf="view === 'collection'">
     </app-new-collectible>-->
-
-
     <app-film-collection *ngIf="view==='home'"></app-film-collection>
+    <app-user-profile *ngIf="view==='user'"></app-user-profile>
+    <app-tickets *ngIf="view==='tickets'"></app-tickets>
     <app-presentation *ngIf="view==='presentation'"></app-presentation>
     <app-sign-in *ngIf="view==='signin'"></app-sign-in>
     <!--app-menu></app-menu>-->
