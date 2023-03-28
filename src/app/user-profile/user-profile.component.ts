@@ -15,15 +15,20 @@ export class UserProfileComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.appStateService.observe("login", (userId: string) => {
+    console.log("user profile  init");
+
+    /*this.appStateService.observe("login", (userId: string) => {
       this.userLogged = userId;
+      this.user = this.appStateService.userLogged;
+      console.log("user Profile "+this.user);
     });
-    this.appStateService.users.then((users)=>{
+    /*this.appStateService.users.then((users)=>{
       for(let user of users) {
         if(this.userLogged.length>0 && user.email===this.userLogged)
           this.user = user;
       }
-    });
-    this.userLogged = "";
+    });*/
+    this.user = this.appStateService.userLogged;
   }
+
 }

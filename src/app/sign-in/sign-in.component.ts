@@ -24,7 +24,7 @@ export class SignInComponent {
 
   signin(event: Event) {
     event.preventDefault();
-    console.log(this.email + " " + this.password)
+    //console.log(this.email + " " + this.password)
     this.appStateService.login().subscribe((data: UserInfoI | null) => {
       if (data !== null) {
         this.userlogged = {
@@ -34,7 +34,11 @@ export class SignInComponent {
           id: data.id,
           nome: data.nome
         }
+        
+        this.appStateService.userLogged=this.userlogged;
         this.appStateService.updateView(this.userlogged.nome);
+        //console.log("ecco"+this.appStateService.userLogged.nome)
+
         this.openOnSuccessLogin();
       }
       else {

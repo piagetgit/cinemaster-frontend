@@ -8,11 +8,11 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AppStateService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    userIsLogged!: UserInfoI | null;
+    _userLogged!: UserInfoI | null;
     private _currentView;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
-    private _users: Promise<{[id: number]: UserInfoI}>;
+    //private _users: Promise<{[id: number]: UserInfoI}>;
 
 
     constructor(private http: HttpClient) {
@@ -26,7 +26,7 @@ export class AppStateService {
         'Content-type': 'application/json'
       });
 
-      const result = this.http.get<UserInfoI[]>(this.basePath + '/users', { headers: headers });
+      /*const result = this.http.get<UserInfoI[]>(this.basePath + '/users', { headers: headers });
       const resultAsPromise = lastValueFrom<UserInfoI[]>(result);
 
 
@@ -37,7 +37,7 @@ export class AppStateService {
         }
         //console.log(result);
         return result;
-      })
+      })*/
     }
 
     observe(evento: string, callback: (e: string) => void) {
@@ -50,14 +50,14 @@ export class AppStateService {
         for (let callback of this.observers["view"]) {
             callback(view);
         }
-        console.log(view);
+        //console.log(view);
     }
 
     logout(){
         for (let callback of this.observers["login"]) {
             callback('');
         }
-        this.userIsLogged= null;
+        this._userLogged= null;
     }
 
     get currentView() {
@@ -67,6 +67,17 @@ export class AppStateService {
     set currentView(view: string) {
         this._currentView = view;
     }
+
+    get userLogged(){
+        return this._userLogged!;
+    }
+
+    set userLogged(user: UserInfoI) {
+        this._userLogged = user;
+        console.log(this.userLogged.nome +" has been set as user");
+    }
+
+    
 
     login() {
         const headers = new HttpHeaders({
@@ -86,10 +97,10 @@ export class AppStateService {
         }
     }
 
-    get users(): Promise<UserInfoI[]> {
+    /*get users(): Promise<UserInfoI[]> {
       return this._users.then((dati) => {
         return Object.values(dati);
       });
 
-    }
+    }*/
 }
