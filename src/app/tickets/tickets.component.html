@@ -1,1 +1,34 @@
-<p>tickets works!</p>
+<div class="form">
+  <form class="container text-center">
+    <div class="form-group">
+      <label >Film name</label>
+      <input type="name" class="form-control"  placeholder="Enter film name" [value]="titolo" (change)="verifyFilm($event)">
+    </div>
+    <div class="form-group" id="nSeats">
+      <label >Number of seats</label>
+      <input type="number" class="form-control"  placeholder="How many places?" [value]="nSeats" (change)="addSeats($event)">
+    </div>
+    <button id="buy" mat-raised-button (click)="buy($event)">Buy</button>
+  </form>
+</div>
+
+<!--l'idea è che nella stessa pagina metto sia il form per comprare sia la lista acquistati-->
+
+<h2>La tua lista acquisti</h2>
+<section class="cards">
+  <ng-container *ngFor="let ticket of tickets, let pos = index">
+    <div class="card">
+      <p class="card__name">
+        {{ticket.nome}}
+      </p>
+      <div class="card__content">
+        <p class="card__title text--medium">
+          {{ticket.seats}}
+        </p>
+        <p class="card__title text--medium">
+          {{ticket.price}}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</section>
