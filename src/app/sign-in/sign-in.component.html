@@ -1,23 +1,24 @@
 <div class="form">
+  <div class="form2">
     <form class="container text-center">
   <div class="form-group">
-    <label >Email address</label>
+    <label style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-at"></i>  Username</label>
     <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" [value]="email" (change)="updateEmail($event)">
   </div>
   <div class="form-group" id="password">
-    <label >Password</label>
+    <label style="margin-top: 30px;margin-bottom: 20px;"><i class="fas fa-key"></i>  Password</label>
     <input type="password" class="form-control"  placeholder="Password" placeholder="Password" [value]="password" (change)="updatePassword($event)">
   </div>
   <button id="signin" mat-raised-button type="submit" (click)="signin($event)">Submit</button>
 </form>
 </div>
-
+</div>
 <!--<form class="form text-center">
     <div id="email" class="form-group">
         <label>Email address</label>
       <input type="text" placeholder="Enter email" [value]="email" (change)="updateEmail($event)" [class]="{'button':true}">
     </div>
-    
+
     <div id="password">
         <label >Password</label>
       <input type="password"  placeholder="Password" [value]="password" (change)="updatePassword($event)">
