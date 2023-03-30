@@ -35,8 +35,8 @@ export class TicketsComponent implements OnInit{
         else 
         return 1
       })
-      ///console.log(this.tickets[0]);
     });
+    this.titolo=this.appStateService.filmToPay.titolo;
   }
 
   verifyFilm(event: Event) {
