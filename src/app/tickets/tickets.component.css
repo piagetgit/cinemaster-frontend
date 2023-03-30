@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
+ /*overflow-y: hidden;*/
+  -ms-overflow-style: none;
   background-color: #02023d;
   margin-top: 0px;
   margin-bottom: -270px;
@@ -17,6 +19,38 @@
   font-size: 26px;
 
 }
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--landscape img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.card__info {
+  display: flex;
+  align-self: end;
+  align-items: center;
+  font-size: 16px;
+}
+
+.card__info22 {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  margin-left: 13px;
+  margin-bottom: 70px;
+}
+
+
 
 .form{
   width: 60%;
