@@ -1,17 +1,21 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import { MatCalendarCellClassFunction } from "@angular/material/datepicker";
+import { AppStateService } from "../services/app-state.service";
+import {UserRegistred} from "../interface/userSignupResponse";
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  //encapsulation: ViewEncapsulation.None,
 })
 export class SignUpComponent {
   name: string = '';
   surname: string = '';
   email: string = '';
   password: string = '';
+  birthdate: string = '';
   /*dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
     if (view === 'month') {
@@ -23,7 +27,39 @@ export class SignUpComponent {
 
     return '';
   };*/
+  useregistred!: UserRegistred;
 
+  constructor(private appStateService:AppStateService) {
+  }
+
+  signup(event: MouseEvent) {
+    event.preventDefault();
+    this.appStateService.register().subscribe((data: UserRegistred | null) => {
+      if (data !== null) {
+        this.useregistred = {
+          nome: data.nome,
+          cognome: data.cognome,
+          email: data.email,
+          password: data.password,
+          dataNascita: data.dataNascita,
+          ruolo: "user"
+        }
+        this.appStateService.changeView('home');
+
+        //this.openOnSuccessLogin();
+      }
+      else {
+        //this.openOnFailLogin();
+      }
+    })
+  }
+
+  /*openOnSuccessLogin() {
+    this.toast.success({ detail: 'success', summary: 'Login Success', position: 'tr', duration: 2000 });
+  }
+  openOnFailLogin() {
+    this.toast.error({detail: 'Error', summary: 'Check your email and Password', position: 'tr', duration: 2000});
+  }*/
 
   updateName(event: Event) {
     this.name = (event.target as HTMLInputElement).value;
@@ -41,13 +77,7 @@ export class SignUpComponent {
     this.password = (event.target as HTMLInputElement).value;
   }
 
-  signup($event: MouseEvent) {
-
+  updateBirthdate(event: Event) {
+    this.birthdate = (event.target as HTMLInputElement).value;
   }
 }
-
-  /*updateBirthdate(event: Event) {
-    this.birthdate = (event.target as HTMLInputElement).value;
-  }*/
-
-

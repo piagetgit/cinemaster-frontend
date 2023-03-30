@@ -2,6 +2,7 @@ import { UserInfoI } from './../interface/userLoginResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
+import {UserRegistred} from "../interface/userSignupResponse";
 
 @Injectable({
     providedIn: 'root'
@@ -88,6 +89,15 @@ export class AppStateService {
 
         const body = { id: 'alice.corvetto@cmail.it', logPassword: 'alccrvtt' };
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
+    }
+
+    register(){
+      const headers = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      });
+      const body = { name: 'ciccio', surname: 'pasticcio', email: 'cicciopast@cmail.it', password: 'ccopstco', datebirth: '1990-12-11 00:00:00' };
+      return this.http.post<UserRegistred | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
     }
 
     updateView(id:string) {
