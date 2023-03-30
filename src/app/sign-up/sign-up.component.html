@@ -1,6 +1,6 @@
 <div>
-  <h1>Benvenuto!</h1>
-  <p>Unisciti a noi!</p>
+  <h1>Benvenuto tra noi!</h1>
+  <p>Dacci qualche credenziale su di te:</p>
 </div>
 <form>
   <div class="form-group">
@@ -11,4 +11,23 @@
     <label style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-at"></i>  Surname</label>
     <input type="name" class="form-control" placeholder="Enter surname" [value]="surname" (change)="updateSurname($event)">
   </div>
+  <div class="form-group">
+    <label style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-at"></i>  Email</label>
+    <input type="name" class="form-control" placeholder="Enter email" [value]="email" (change)="updateEmail($event)">
+  </div>
+  <div class="form-group">
+    <label style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-at"></i>  Password</label>
+    <input type="name" class="form-control" placeholder="Enter new password" [value]="password" (change)="updatePassword($event)">
+  </div>
+  <div class="form-group">
+    <label style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-at"></i>  Birthdate</label>
+    <!--mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+    </mat-form-field-->
+  </div>
+  <button id="signup" mat-raised-button type="submit" (click)="signup($event)">Submit</button>
 </form>
