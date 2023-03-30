@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
 
   }
 
-  goTo(where: "home" | "user" | "film" | "tickets" | "presentation") {
+  goTo(where: "home" | "user" | "film" | "tickets" | "presentation" | "movies") {
     this.appStateService.changeView(where);
   }
 }

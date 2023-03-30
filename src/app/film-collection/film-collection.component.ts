@@ -19,6 +19,4 @@ export class FilmCollectionComponent implements OnInit{
       this.films=films; 
     });
   }
-  
-
 }

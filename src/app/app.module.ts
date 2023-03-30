@@ -19,6 +19,8 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {MatTableModule} from '@angular/material/table';
+import { HomeComponent } from './home/home.component';
+import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {MatTableModule} from '@angular/material/table';
     SignInComponent,
     SignUpComponent,
     PresentationComponent,
-    TicketsComponent
+    TicketsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     MatCardModule,
     NgToastModule,
-    MatTableModule
+    MatTableModule,
+    CarouselModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
