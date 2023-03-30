@@ -58,6 +58,7 @@ export class AppStateService {
             callback('');
         }
         this._userLogged= null;
+        this.changeView('home');
     }
 
     get currentView() {
