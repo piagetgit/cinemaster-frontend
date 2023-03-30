@@ -1,0 +1,40 @@
+:host {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  background-color: #02023d;
+  /*background-color:red;*/
+  color: #7bc7ff;
+}
+h1{
+  font: 400 34px/49px Roboto, sans-serif;
+  text-align: center;
+}
+
+h2{
+
+  margin: -20px 0 31px;
+
+}
+
+.form{
+  width: 60%;
+  margin-top: 10px;
+  margin-left: 23%;
+}
+/*.text-center {
+  text-align: start;
+  margin-left: 33%;
+}*/
+.form2{
+  padding: 45px 20px 28px 20px;
+  margin-top: 10px;
+  border: #2e6acc solid;
+  background-color: #02023d;
+  border-radius: 10px;
+}
+
+

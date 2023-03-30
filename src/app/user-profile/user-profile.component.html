@@ -1,8 +1,19 @@
-<h1>Ciao {{user.nome}}!</h1>
-<ul>I tuoi dati di registrazione:
+
+
+<div class="form">
+  <h1>Ciao {{user.nome}}!</h1>
+  <div class="form2">
+    <form class="container text-center">
+      <div class="form-group">
+<h2>I tuoi dati di registrazione:</h2>
+<ul style="text-align: start;margin-left: 30%;">
   <li>Id accesso: {{user.id}}</li>
   <li>Nome: {{user.nome}}</li>
   <li>Cognome: {{user.cognome}}</li>
   <li>Email: {{user.email}}</li>
-  <li>Data di nascita: {{user.dataNascita}}</li>
+  <li>Data di nascita: {{user.dataNascita | date:'longDate'}}</li>
 </ul>
+      </div>
+    </form>
+  </div>
+</div>
