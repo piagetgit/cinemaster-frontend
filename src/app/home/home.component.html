@@ -1,19 +1,19 @@
-<c-carousel [dark]="true" [wrap]="false">
-    <c-carousel-indicators></c-carousel-indicators>
-    <c-carousel-inner>
-      <c-carousel-item *ngFor="let slide of slides; index as i;">
-        <img
-          [src]="slide.src"
-          alt="{{slide.title}}"
-          class="d-block w-100"
-          loading="lazy"
-        />
-        <c-carousel-caption class="d-none d-md-block">
-          <h3>{{slide.title}}</h3>
-          <p>{{slide.subtitle}}</p>
-        </c-carousel-caption>
-      </c-carousel-item>
-    </c-carousel-inner>
-    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
-</c-carousel>
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators" *ngFor="let film of films let i = index">
+    <li data-target="#carouselExampleCaptions" data-slide-to="i" [ngClass]="{'active': i == 0 }"></li>
+</ol>
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let film of films let i = index"
+      [ngClass]="{'active': i == 0 }">
+      <img src="/assets/images/{{film.img}}" class="d-block w-100">
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
