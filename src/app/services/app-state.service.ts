@@ -77,7 +77,7 @@ export class AppStateService {
         console.log(this.userLogged.nome +" has been set as user");
     }
 
-    
+
 
     login() {
         const headers = new HttpHeaders({
@@ -85,7 +85,7 @@ export class AppStateService {
             'Content-type': 'application/json'
         });
 
-        const body = { id: 'alice.corvetto2@cmail.it', logPassword: 'alccrvtt' };
+        const body = { id: 'alice.corvetto@cmail.it', logPassword: 'alccrvtt' };
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
     }
 
