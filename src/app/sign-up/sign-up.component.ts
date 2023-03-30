@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
+  name: any;
+  surname: any;
 
+  updateName($event: Event) {
+    
+  }
+
+  updateSurname($event: Event) {
+    
+  }
 }

@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-    <app-menu *ngIf="view !=='signin'"></app-menu>
+    <app-menu *ngIf="view!=='signin' && view!=='signup'"></app-menu>
     <!--<app-user-profile
                       *ngIf="view === 'profile'">
     </app-user-profile>
@@ -12,6 +12,7 @@
     <app-tickets *ngIf="view==='tickets'"></app-tickets>
     <app-presentation *ngIf="view==='presentation'"></app-presentation>
     <app-sign-in *ngIf="view==='signin'"></app-sign-in>
+    <app-sign-up *ngIf="view==='signup'"></app-sign-up>
     <!--app-menu></app-menu>-->
     <lib-ng-toast></lib-ng-toast>
     <!--<app-sign-in ></app-sign-in>-->
