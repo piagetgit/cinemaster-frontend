@@ -1,3 +1,4 @@
+import { FilmInfoI } from './../interface/film';
 import { UserRegistredResponse } from './../interface/userSignupResponse';
 import { UserInfoI } from './../interface/userLoginResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,9 +9,10 @@ import { lastValueFrom } from 'rxjs';
     providedIn: 'root'
 })
 export class AppStateService {
-    basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    _userLogged!: UserInfoI | null;
+    private basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    private _userLogged!: UserInfoI | null;
     private _currentView;
+    filmToPay!:FilmInfoI;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
     //private _users: Promise<{[id: number]: UserInfoI}>;

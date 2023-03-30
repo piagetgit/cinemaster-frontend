@@ -3,8 +3,6 @@ import { Ticket } from './../interface/ticket';
 import { Component, OnInit } from '@angular/core';
 import {AppService} from "../services/app.service";
 import {FilmInfoI} from "../interface/film";
-import {UserInfoI} from "../interface/userLoginResponse";
-import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-tickets',
@@ -17,7 +15,7 @@ export class TicketsComponent implements OnInit{
   titolo!: string;
   nSeats!: string;
   tickets!:Ticket[];
-  //displayedColumns: string[] = ['id', 'Film', 'Date', 'price','Pagato'];
+
   displayedColumns: string[] = ['id','dataOra','numeroPersone','prezzoTotale','posti','pagato'];
 
   constructor(private appService:AppService,private appStateService:AppStateService){
