@@ -16,20 +16,57 @@
 <!--l'idea è che nella stessa pagina metto sia il form per comprare sia la lista acquistati-->
 
 <h2 style="margin-top: 30px;margin-bottom: 20px;">La tua lista acquisti</h2>
-<section class="cards">
-  <ng-container *ngFor="let ticket of tickets, let pos = index">
-    <div class="card">
-      <p class="card__name">
-        {{ticket.nome}}
-      </p>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          {{ticket.seats}}
-        </p>
-        <p class="card__title text--medium">
-          {{ticket.price}}
-        </p>
-      </div>
-    </div>
+<table mat-table [dataSource]="tickets" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column
+  <ng-container matColumnDef="No.">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Film </th>
+    <td mat-cell *matCellDef="let element"> {{films![element.id].titolo}} </td>
   </ng-container>
-</section>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="dataOra">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.dataOra | date:'medium'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="numeroPersone">
+    <th mat-header-cell *matHeaderCellDef> Numero Posti </th>
+    <td mat-cell *matCellDef="let element"> {{element.numeroPersone}} </td>
+  </ng-container>
+
+  
+  <!-- Symbol Column 
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>-->
+  
+
+  <ng-container matColumnDef="prezzoTotale">
+    <th mat-header-cell *matHeaderCellDef> Prezzo </th>
+    <td mat-cell *matCellDef="let element"> {{element.prezzoTotale}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="posti">
+    <th mat-header-cell *matHeaderCellDef> Posti </th>
+    <td mat-cell *matCellDef="let element"> {{element.posti}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pagato">
+    <th mat-header-cell *matHeaderCellDef> Pagato </th>
+    <td mat-cell *matCellDef="let element"> {{element.pagato}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

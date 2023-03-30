@@ -1,5 +1,6 @@
+import { AppStateService } from './../services/app-state.service';
+import { Ticket } from './../interface/ticket';
 import { Component, OnInit } from '@angular/core';
-import { AppStateService } from "../services/app-state.service";
 import {AppService} from "../services/app.service";
 import {FilmInfoI} from "../interface/film";
 import {UserInfoI} from "../interface/userLoginResponse";
@@ -15,15 +16,28 @@ export class TicketsComponent implements OnInit{
   film!:FilmInfoI;
   titolo!: string;
   nSeats!: string;
-  tickets!: {nome: string, seats: number, price: number}[];
+  tickets!:Ticket[];
+  //displayedColumns: string[] = ['id', 'Film', 'Date', 'price','Pagato'];
+  displayedColumns: string[] = ['id','dataOra','numeroPersone','prezzoTotale','posti','pagato'];
 
-  constructor(private appService:AppService){
+  constructor(private appService:AppService,private appStateService:AppStateService){
 
   }
 
   ngOnInit() {
+    console.log("init ticket component")
     this.appService.films.then((films)=>{
       this.films=films;
+    });
+    
+    this.appService.loadTicketByUserId(this.appStateService.userLogged.id).then((tickets)=>{
+      this.tickets = tickets.sort((t1,t2)=>{
+        if (t1.dataOra<t2.dataOra) 
+          return -1 
+        else 
+        return 1
+      })
+      ///console.log(this.tickets[0]);
     });
   }
 

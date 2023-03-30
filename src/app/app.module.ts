@@ -18,6 +18,7 @@ import {NgToastModule} from "ng-angular-popup";
 import { PresentationComponent } from './presentation/presentation.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {SignUpComponent} from "./sign-up/sign-up.component";
     MatGridListModule,
     HttpClientModule,
     MatCardModule,
-    NgToastModule
+    NgToastModule,
+    MatTableModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
