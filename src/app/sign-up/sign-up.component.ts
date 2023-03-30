@@ -1,8 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import { MatCalendarCellClassFunction } from "@angular/material/datepicker";
 import { AppStateService } from "../services/app-state.service";
-import {UserRegistred} from "../interface/userSignupResponse";
 import { NgToastService } from 'ng-angular-popup';
+import { UserRegistredResponse } from '../interface/userSignupResponse';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,39 +27,33 @@ export class SignUpComponent {
 
     return '';
   };*/
-  useregistred!: UserRegistred;
+  useregistred!: UserRegistredResponse;
 
-  constructor(private appStateService:AppStateService) {
+  constructor(private appStateService:AppStateService,private toast: NgToastService) {
   }
 
   signup(event: MouseEvent) {
     event.preventDefault();
-    this.appStateService.register().subscribe((data: UserRegistred | null) => {
+    this.appStateService.register(this.email,this.password,this.name,this.surname,this.birthdate).subscribe((data: UserRegistredResponse | null) => {
       if (data !== null) {
-        this.useregistred = {
-          nome: data.nome,
-          cognome: data.cognome,
-          email: data.email,
-          password: data.password,
-          dataNascita: data.dataNascita,
-          ruolo: "user"
+          if (data.code === "2002"){
+            this.openOnSuccessLogin();
+          }
+          else if (data.code === "4004"){
+            this.openOnFailLogin(data.message);
+          }
         }
         this.appStateService.changeView('home');
 
-        //this.openOnSuccessLogin();
-      }
-      else {
-        //this.openOnFailLogin();
-      }
     })
   }
 
-  /*openOnSuccessLogin() {
-    this.toast.success({ detail: 'success', summary: 'Login Success', position: 'tr', duration: 2000 });
+  openOnSuccessLogin() {
+    this.toast.success({ detail: 'success', summary: 'SignUp Success', position: 'tr', duration: 2000 });
   }
-  openOnFailLogin() {
-    this.toast.error({detail: 'Error', summary: 'Check your email and Password', position: 'tr', duration: 2000});
-  }*/
+  openOnFailLogin(message:string) {
+    this.toast.error({detail: 'Error', summary: message, position: 'tr', duration: 2000});
+  }
 
   updateName(event: Event) {
     this.name = (event.target as HTMLInputElement).value;

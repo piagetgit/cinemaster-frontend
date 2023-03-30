@@ -1,8 +1,6 @@
-export interface UserRegistred {
-  nome:string,
-  cognome:string,
-  email: string,
-  password: string,
-  dataNascita:Date,
-  ruolo:string
+export interface UserRegistredResponse {
+
+    message: string;
+    code: string;
+
 }

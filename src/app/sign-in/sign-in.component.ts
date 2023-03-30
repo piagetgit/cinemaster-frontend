@@ -25,7 +25,7 @@ export class SignInComponent {
   signin(event: Event) {
     event.preventDefault();
     //console.log(this.email + " " + this.password)
-    this.appStateService.login().subscribe((data: UserInfoI | null) => {
+    this.appStateService.login(this.email,this.password).subscribe((data: UserInfoI | null) => {
       if (data !== null) {
         this.userlogged = {
           email: data.email,

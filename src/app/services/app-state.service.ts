@@ -1,8 +1,8 @@
+import { UserRegistredResponse } from './../interface/userSignupResponse';
 import { UserInfoI } from './../interface/userLoginResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
-import {UserRegistred} from "../interface/userSignupResponse";
 
 @Injectable({
     providedIn: 'root'
@@ -26,19 +26,6 @@ export class AppStateService {
         'Accept': 'application/json',
         'Content-type': 'application/json'
       });
-
-      /*const result = this.http.get<UserInfoI[]>(this.basePath + '/users', { headers: headers });
-      const resultAsPromise = lastValueFrom<UserInfoI[]>(result);
-
-
-      this._users = resultAsPromise.then((dati: UserInfoI[]) => {
-        const result: {[id: number]: UserInfoI}= {};
-        for (let user of dati) {
-          result[user.id] = user;
-        }
-        //console.log(result);
-        return result;
-      })*/
     }
 
     observe(evento: string, callback: (e: string) => void) {
@@ -81,23 +68,23 @@ export class AppStateService {
 
 
 
-    login() {
+    login(email:string,password:string) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        const body = { id: 'alice.corvetto@cmail.it', logPassword: 'alccrvtt' };
+        const body = { id: email, logPassword: password };
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
     }
 
-    register(){
+    register(email:string,password:string,nome:string,cogome:string,dataNascita:string){
       const headers = new HttpHeaders({
         'Accept': 'application/json',
         'Content-type': 'application/json'
       });
-      const body = { name: 'ciccio', surname: 'pasticcio', email: 'cicciopast@cmail.it', password: 'ccopstco', datebirth: '1990-12-11 00:00:00' };
-      return this.http.post<UserRegistred | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
+      const body = { nome: nome, cogome: cogome, email: email, password: password, dataNascita: Date.parse(dataNascita) ,ruolo:'utente' };
+      return this.http.post<UserRegistredResponse | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
     }
 
     updateView(id:string) {
@@ -107,11 +94,4 @@ export class AppStateService {
             callback('home');
         }
     }
-
-    /*get users(): Promise<UserInfoI[]> {
-      return this._users.then((dati) => {
-        return Object.values(dati);
-      });
-
-    }*/
 }
