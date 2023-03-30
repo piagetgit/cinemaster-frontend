@@ -29,14 +29,15 @@ export class TicketsComponent implements OnInit{
     this.appService.films.then((films)=>{
       this.films=films;
     });
-
-    /*this.appService.tickets.then((tickets)=>{
-      this.tickets = tickets;
-    })*/
-
+    
     this.appService.loadTicketByUserId(this.appStateService.userLogged.id).then((tickets)=>{
-      this.tickets = tickets
-      console.log(this.tickets[0]);
+      this.tickets = tickets.sort((t1,t2)=>{
+        if (t1.dataOra<t2.dataOra) 
+          return -1 
+        else 
+        return 1
+      })
+      ///console.log(this.tickets[0]);
     });
   }
 
