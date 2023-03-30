@@ -47,7 +47,7 @@ import { CarouselModule } from '@coreui/angular';
     MatCardModule,
     NgToastModule,
     MatTableModule,
-    CarouselModule
+    CarouselModule,
     MatTableModule,
     MatDatepickerModule
   ],
