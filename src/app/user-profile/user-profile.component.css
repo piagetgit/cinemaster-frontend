@@ -3,9 +3,9 @@
   min-height: 100vh;
   max-height: 100vh;*/
   grid-row-start: v-center-top;
-  grid-row-end: v-center-bot;
+  grid-row-end: footer;
   grid-column-start: h-center;
-  grid-column-end: h2-center;
+  grid-column-end: end;
   margin: 0px;
   padding: 0px;
   display: grid;
