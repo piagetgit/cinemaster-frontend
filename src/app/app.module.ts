@@ -19,6 +19,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {MatTableModule} from '@angular/material/table';
+import {MatCalendarCellClassFunction, MatDatepickerModule} from "@angular/material/datepicker";
 import { HomeComponent } from './home/home.component';
 import { CarouselModule } from '@coreui/angular';
 
@@ -47,6 +48,8 @@ import { CarouselModule } from '@coreui/angular';
     NgToastModule,
     MatTableModule,
     CarouselModule
+    MatTableModule,
+    MatDatepickerModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
