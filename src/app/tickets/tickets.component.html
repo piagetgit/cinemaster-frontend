@@ -1,20 +1,21 @@
 <div class="form">
+  <div class="form2">
   <form class="container text-center">
     <div class="form-group">
-      <label >Film name</label>
-      <input type="name" class="form-control"  placeholder="Enter film name" [value]="titolo" (change)="verifyFilm($event)">
+      <label  style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-film"></i>  Film name</label>
+      <input type="text" class="form-control"  placeholder="Enter film name" [value]="titolo" (change)="verifyFilm($event)">
     </div>
     <div class="form-group" id="nSeats">
-      <label >Number of seats</label>
+      <label  style="margin-top: 30px;margin-bottom: 20px;"><i class="fas fa-boxes"></i>  Number of seats</label>
       <input type="number" class="form-control"  placeholder="How many places?" [value]="nSeats" (change)="addSeats($event)">
     </div>
-    <button id="buy" mat-raised-button (click)="buy($event)">Buy</button>
+    <button id="buy" mat-raised-button (click)="buy($event)">Buy  <i class="fas fa-shopping-cart"></i></button>
   </form>
 </div>
-
+</div>
 <!--l'idea è che nella stessa pagina metto sia il form per comprare sia la lista acquistati-->
 
-<h2>La tua lista acquisti</h2>
+<h2 style="margin-top: 30px;margin-bottom: 20px;">La tua lista acquisti</h2>
 <section class="cards">
   <ng-container *ngFor="let ticket of tickets, let pos = index">
     <div class="card">

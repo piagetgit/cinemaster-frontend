@@ -1,0 +1,54 @@
+:host {
+  grid-row-start: v-center-top;
+  grid-row-end: v-center-bot;
+  grid-column-start: h-center;
+  grid-column-end: h2-center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background-color: #02023d;
+  margin-top: 0px;
+  margin-bottom: -270px;
+  margin-left: 0px;
+  margin-right: -150px;
+  min-width: 200px;
+  color: #7bc7ff;
+  font-size: 26px;
+
+}
+
+.form{
+  width: 60%;
+  margin-top: 10px;
+}
+
+.form2{
+  padding: 45px 20px 28px 20px;
+  margin-top: 10px;
+  border: #2e6acc solid;
+  background-color: #02023d;
+  border-radius: 10px;
+}
+
+
+
+#email{
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+#buy{
+  width: 50%;
+  margin-top: 50px;
+  background-color: #00da27;
+}
+
+#buy:hover{
+  margin-top: 50px;
+  background-color: #2efc00;
+}
+
+#password{
+  margin-top: 10px;
+}
