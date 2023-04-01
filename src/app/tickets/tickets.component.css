@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
- /*overflow-y: hidden;*/
+  /* overflow: scroll;
+overflow-y: hidden;*/
   -ms-overflow-style: none;
   background-color: #02023d;
   margin-top: 0px;

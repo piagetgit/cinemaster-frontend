@@ -14,6 +14,7 @@
   align-items: center;
   color: #7bc7ff;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 h1{
