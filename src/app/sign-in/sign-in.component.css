@@ -15,17 +15,26 @@
     min-width: 200px;
   color: #ffe55c;
   font-size: 21px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a8/Leonard_Nimoy_William_Shatner_Star_Trek_1968.JPG');
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-blend-mode: overlay;
   }
 
+h1{
+  font-weight: bold;
+  margin-top: 30px;
+}
+
   .form{
-    margin-top: 30px;
+    margin-top: 0px;
   }
 
 .form2{
   padding: 45px 20px 28px 20px;
-  margin-top: 110px;
+  margin-top: 40px;
   border: #ccc62e solid;
-  background-color: #02023d;
+ /* background-color: #02023d;*/
   border-radius: 23px;
 }
 

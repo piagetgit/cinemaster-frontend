@@ -8,7 +8,13 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-  }
+  background-image: url('https://upload.wikimedia.org/wikipedia/it/b/b4/USS_Enterprise_NCC-1701.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: left;
+  background-blend-mode: overlay;
+
+}
   /*.collection-content {
     max-width: 800px;
 
