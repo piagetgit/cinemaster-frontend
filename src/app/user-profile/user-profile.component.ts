@@ -13,19 +13,8 @@ export class UserProfileComponent implements OnInit{
   user!:UserInfoI;
   userLogged!: string;
   tickets!:Ticket[];
-  //displayedColumns: string[] = ['id', 'Film', 'Date', 'price','Pagato'];
-
-
-
 
   films!:FilmInfoI[] | null;
-  film!:FilmInfoI;
-  titolo!: string;
-  nSeats!: string;
-
-
-
-
 
   displayedColumns: string[] = ['id','dataOra','numeroPersone','prezzoTotale','posti','pagato'];
 
@@ -37,17 +26,7 @@ export class UserProfileComponent implements OnInit{
     this.appService.films.then((films)=>{
       this.films=films;
     });
-    /*this.appStateService.observe("login", (userId: string) => {
-      this.userLogged = userId;
-      this.user = this.appStateService.userLogged;
-      console.log("user Profile "+this.user);
-    });
-    /*this.appStateService.users.then((users)=>{
-      for(let user of users) {
-        if(this.userLogged.length>0 && user.email===this.userLogged)
-          this.user = user;
-      }
-    });*/
+    
     this.user = this.appStateService.userLogged;
 
 

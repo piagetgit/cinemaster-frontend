@@ -2,7 +2,8 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import { MatCalendarCellClassFunction } from "@angular/material/datepicker";
 import { AppStateService } from "../services/app-state.service";
 import { NgToastService } from 'ng-angular-popup';
-import { UserRegistredResponse } from '../interface/userSignupResponse';
+import { UserSignUpResponse } from '../interface/userSignupResponse';
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,32 +28,25 @@ export class SignUpComponent {
 
     return '';
   };*/
-  useregistred!: UserRegistredResponse;
+  useregistred!: UserSignUpResponse;
 
-  constructor(private appStateService:AppStateService,private toast: NgToastService) {
+  constructor(private appStateService:AppStateService,private appService: AppService) {
   }
 
   signup(event: MouseEvent) {
     event.preventDefault();
-    this.appStateService.register(this.email,this.password,this.name,this.surname,this.birthdate).subscribe((data: UserRegistredResponse | null) => {
+    this.appStateService.registration(this.email,this.password,this.name,this.surname,this.birthdate).subscribe((data: UserSignUpResponse | null) => {
       if (data !== null) {
           if (data.code === "2002"){
-            this.openOnSuccessLogin();
+            this.appService.openOnSuccessLogin("SignUp Success");
           }
           else if (data.code === "4004"){
-            this.openOnFailLogin(data.message);
+            this.appService.openOnFailLogin(data.message);
           }
         }
         this.appStateService.changeView('home');
 
     })
-  }
-
-  openOnSuccessLogin() {
-    this.toast.success({ detail: 'success', summary: 'SignUp Success', position: 'tr', duration: 2000 });
-  }
-  openOnFailLogin(message:string) {
-    this.toast.error({detail: 'Error', summary: message, position: 'tr', duration: 2000});
   }
 
   updateName(event: Event) {

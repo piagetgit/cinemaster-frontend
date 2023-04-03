@@ -1,5 +1,5 @@
 import { FilmInfoI } from './../interface/film';
-import { UserRegistredResponse } from './../interface/userSignupResponse';
+import { UserSignUpResponse } from './../interface/userSignupResponse';
 import { UserInfoI } from './../interface/userLoginResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
@@ -80,13 +80,13 @@ export class AppStateService {
         return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
     }
 
-    register(email:string,password:string,nome:string,cogome:string,dataNascita:string){
+    registration(email:string,password:string,nome:string,cogome:string,dataNascita:string){
       const headers = new HttpHeaders({
         'Accept': 'application/json',
         'Content-type': 'application/json'
       });
       const body = { nome: nome, cogome: cogome, email: email, password: password, dataNascita: Date.parse(dataNascita) ,ruolo:'utente' };
-      return this.http.post<UserRegistredResponse | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
+      return this.http.post<UserSignUpResponse | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
     }
 
     updateView(id:string) {

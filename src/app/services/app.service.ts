@@ -3,19 +3,19 @@ import { FilmInfoI } from '../interface/film';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
+import { NgToastService } from 'ng-angular-popup';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    //basePath: string = "http://localhost:8080/api/customer";
     private _films: Promise<{[id: number]: FilmInfoI}>;
     private _tickets!: Promise<Ticket[]>;
 
     //private tickets!: Ticket[];
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private toast: NgToastService) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
@@ -73,6 +73,27 @@ export class AppService {
 
           return this._tickets;
     }
+
+    buyTicket(userId:number,filmId:number,numeroPersone:number,dataOra:string,pagato:boolean,posti:string){
+        const headers = new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        });
+
+        const body = { userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato:pagato ,posti:posti };
+    
+        console.log("url: "+this.basePath + '/payment/ticket/buy'+ "\n" + "body: "+JSON.stringify(body));
+
+        return this.http.post<Ticket>(this.basePath+ '/payment/ticket/buy',JSON.stringify(body), { headers: headers });
+
+    }
+
+    openOnSuccessLogin(message:string) {
+        this.toast.success({ detail: 'success', summary: message, position: 'tr', duration: 1000 });
+      }
+      openOnFailLogin(message:string) {
+        this.toast.error({ detail: 'Error', summary: message, position: 'tr', duration: 1000 });
+      }
 
     get films(): Promise<FilmInfoI[]> {
         return this._films.then((dati) => {

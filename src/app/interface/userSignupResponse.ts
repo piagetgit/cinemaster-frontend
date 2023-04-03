@@ -1,4 +1,4 @@
-export interface UserRegistredResponse {
+export interface UserSignUpResponse {
 
     message: string;
     code: string;
