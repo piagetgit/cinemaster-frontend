@@ -14,9 +14,6 @@ export class TicketsComponent implements OnInit {
   film!: FilmInfoI;
   titolo!: string;
   nSeats!: string;
-  tickets!: Ticket[];
-
-  displayedColumns: string[] = ['id', 'dataOra', 'numeroPersone', 'prezzoTotale', 'posti', 'pagato'];
 
   constructor(private appService: AppService, private appStateService: AppStateService) {
 
@@ -28,28 +25,9 @@ export class TicketsComponent implements OnInit {
       this.films = films;
     });
 
-    this.appService.loadTicketByUserId(this.appStateService.userLogged.id).then((tickets) => {
-      this.tickets = tickets.sort((t1, t2) => {
-        if (t1.dataOra < t2.dataOra)
-          return -1
-        else
-          return 1
-      })
-    });
-    if (this.appStateService.filmToPay !== undefined) {
-      this.titolo = this.appStateService.filmToPay.titolo;
-      this.film = this.appStateService.filmToPay;
-    }
-  }
+    this.titolo = this.appStateService.filmToPay.titolo;
+    this.film = this.appStateService.filmToPay;
 
-  verifyFilm(event: Event) {
-    this.titolo = (event.target as HTMLInputElement).value;
-    if (this.films !== null) {
-      for (let film of this.films) {
-        if (film.titolo === this.titolo)
-          this.film = film;
-      }
-    }
   }
 
   addSeats(event: Event) {
@@ -59,10 +37,12 @@ export class TicketsComponent implements OnInit {
 
   buy(event: MouseEvent) {
     event.preventDefault();
-   /*console.log(this.appStateService.userLogged);
-    console.log(this.film);*/
-    this.appService.buyTicket(this.appStateService.userLogged.id,this.film.id,Number(this.nSeats),'2023-04-04T20:00:00',true,"R8").subscribe((data)=>{
-        console.log(data);
+    this.appService.buyTicket(this.appStateService.userLogged.id, this.film.id, Number(this.nSeats), '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
+      console.log(data);
+      if (data !== null){
+        this.appStateService.changeView('movies');
+        this.appService.openOnSuccessLogin('Success');
+      }
     })
   }
 }

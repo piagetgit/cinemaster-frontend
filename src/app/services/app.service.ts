@@ -57,9 +57,9 @@ export class AppService {
 
         console.log("url: " + this.basePath + '/payment/tickets/' + userId);
 
-        const result = this.http.get<Ticket[]>(this.basePath + '/payment/tickets/' + userId, { headers: headers });
+        return this.http.get<Ticket[] | null >(this.basePath + '/payment/tickets/' + userId, { headers: headers });
 
-        const resultAsPromise = lastValueFrom<Ticket[]>(result);
+       /* const resultAsPromise = lastValueFrom<Ticket[]>(result);
 
 
         this._tickets = resultAsPromise.then((dati: Ticket[]) => {
@@ -71,7 +71,7 @@ export class AppService {
             return result;
         })
 
-        return this._tickets;
+        return this._tickets;*/
     }
 
     buyTicket(userId: number, filmId: number, numeroPersone: number, dataOra: string, pagato: boolean, posti: string) {

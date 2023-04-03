@@ -16,8 +16,6 @@ export class UserProfileComponent implements OnInit{
 
   films!:FilmInfoI[] | null;
 
-  displayedColumns: string[] = ['id','dataOra','numeroPersone','prezzoTotale','posti','pagato'];
-
   constructor(private appService:AppService,private appStateService:AppStateService){
 
   }
@@ -30,14 +28,15 @@ export class UserProfileComponent implements OnInit{
     this.user = this.appStateService.userLogged;
 
 
-    this.appService.loadTicketByUserId(this.appStateService.userLogged.id).then((tickets)=>{
-      this.tickets = tickets.sort((t1,t2)=>{
-        if (t1.dataOra<t2.dataOra)
-          return -1
-        else
-          return 1
-      })
-      ///console.log(this.tickets[0]);
+    this.appService.loadTicketByUserId(this.appStateService.userLogged.id).subscribe((tickets)=>{
+      if(tickets !== null){
+        this.tickets = tickets.sort((t1,t2)=>{
+          if (t1.dataOra<t2.dataOra)
+            return -1
+          else
+            return 1
+        })
+      }
     });
 
   }

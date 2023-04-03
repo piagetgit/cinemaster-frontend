@@ -16,7 +16,7 @@
   </div>
 
   <h2 style="margin-top: 30px;margin-bottom: 20px;">La tua lista acquisti</h2>
-  <div style="padding: 30px;margin-left: 130px;">
+  <div *ngIf="tickets!=undefined && tickets.length>0" style="padding: 30px;margin-left: 130px;">
     <div class="card__info22">
 
       <i style="width: 171px;position: center;margin-left: 1px">Titolo</i>
