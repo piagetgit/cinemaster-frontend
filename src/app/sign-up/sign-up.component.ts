@@ -1,15 +1,12 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import { MatCalendarCellClassFunction } from "@angular/material/datepicker";
+import {Component} from '@angular/core';
 import { AppStateService } from "../services/app-state.service";
-import { NgToastService } from 'ng-angular-popup';
 import { UserSignUpResponse } from '../interface/userSignupResponse';
 import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
-  //encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
   name: string = '';
@@ -17,17 +14,6 @@ export class SignUpComponent {
   email: string = '';
   password: string = '';
   birthdate: string = '';
-  /*dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    // Only highligh dates inside the month view.
-    if (view === 'month') {
-      const date = cellDate.getDate();
-
-      // Highlight the 1st and 20th day of each month.
-      return date === 1 || date === 20 ? 'example-custom-date-class' : '';
-    }
-
-    return '';
-  };*/
   useregistred!: UserSignUpResponse;
 
   constructor(private appStateService:AppStateService,private appService: AppService) {

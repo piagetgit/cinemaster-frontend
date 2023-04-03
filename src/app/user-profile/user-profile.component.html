@@ -15,8 +15,6 @@
     </form>
   </div>
 
-
-
   <h2 style="margin-top: 30px;margin-bottom: 20px;">La tua lista acquisti</h2>
   <div style="padding: 30px;margin-left: 130px;">
     <div class="card__info22">
@@ -30,39 +28,29 @@
       <i style="width: 100px;position: center;padding-left: 58px">Pagato</i>
 
     </div>
+    <ng-container *ngFor="let ticket of tickets, let pos = index">
+      <div>
+        <div class="card__info">
+          <div class="circular--landscape">
+            <img src='/assets/images/{{films![ticket.filmId].img}}' />
 
-<!--<div style="overflow: scroll;overflow-x: hidden;">-->
-    <!--<div style="overflow: scroll;overflow-x: hidden;">
-    <ng-container *ngFor="let filmkkk of tickets, let posxxxx = index">-->
+          </div>
+          <i style="width: 171px;position: center;margin-left: 30px">{{films![ticket.filmId].titolo}}</i>
 
-      <ng-container *ngFor="let ticket of tickets, let pos = index">
-        <div>
-          <div class="card__info">
-            <div class="circular--landscape">
+          <i style="width: 317px;position: center">{{ticket.dataOra | date:'medium'}}</i>
 
-           |<!--    <img
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-         -->  <img src='/assets/images/{{films![ticket.filmId].img}}' />
+          <i style="width: 180px;position: center">{{ticket.numeroPersone}}: {{ticket.posti}}</i>
 
-            </div>
-            <i style="width: 171px;position: center;margin-left: 30px">{{films![ticket.filmId].titolo}}</i>
+          <i style="width: 100px;position: center">{{ticket.prezzoTotale}} €</i>
+          <i style="width: 100px;position: center"><ng-container
+              *ngIf="ticket.pagato === true; then first else second"></ng-container>
+            <ng-template #first>Sì</ng-template>
+            <ng-template #second>No</ng-template>
+          </i>
 
-            <i style="width: 317px;position: center">{{ticket.dataOra | date:'medium'}}</i>
-
-            <i style="width: 180px;position: center">{{ticket.numeroPersone}}: {{ticket.posti}}</i>
-
-            <i style="width: 100px;position: center">{{ticket.prezzoTotale}} €</i>
-            <i style="width: 100px;position: center"><ng-container
-                *ngIf="ticket.pagato === true; then first else second"></ng-container>
-              <ng-template #first>Sì</ng-template>
-              <ng-template #second>No</ng-template>
-            </i>
-            <!--  <i style="width: 171px;position: center;margin-left: 30px">{{films![film.id].img}}</i>
-             <i style="width: 100px;position: center">{{film.pagato}}</i>-->
-
+        </div>
       </div>
-    </div>
-    <hr>
-  </ng-container>
-</div>
+      <hr>
+    </ng-container>
+  </div>
 </div>

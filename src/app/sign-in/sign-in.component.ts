@@ -14,12 +14,11 @@ export class SignInComponent {
   password: string = '';
   userlogged!: UserInfoI;
 
-  constructor(private appService: AppService, private appStateService: AppStateService) {}
+  constructor(private appService: AppService, private appStateService: AppStateService) { }
 
   signin(event: Event) {
     event.preventDefault();
-    //console.log(this.email + " " + this.password)
-    this.appStateService.login(this.email,this.password).subscribe((data: UserInfoI | null) => {
+    this.appStateService.login(this.email, this.password).subscribe((data: UserInfoI | null) => {
       if (data !== null) {
         this.userlogged = {
           email: data.email,
@@ -28,18 +27,15 @@ export class SignInComponent {
           id: data.id,
           nome: data.nome
         }
-        
-        this.appStateService.userLogged=this.userlogged;
+
+        this.appStateService.userLogged = this.userlogged;
         this.appStateService.updateView(this.userlogged.nome);
-        //console.log("ecco"+this.appStateService.userLogged.nome)
 
         this.appService.openOnSuccessLogin("Login Success");
       }
       else {
         this.appService.openOnFailLogin("Check your email and Password");
       }
-
-
     })
   }
 
