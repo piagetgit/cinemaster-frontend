@@ -29,6 +29,7 @@ export class FilmCollectionComponent implements OnInit{
     }
     else{
       this.appStateService.changeView('signin');
+      this.appService.openOnInfo("You neeed to signin firstly",2000);
     }
       
   }

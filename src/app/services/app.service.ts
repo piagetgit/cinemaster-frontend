@@ -10,7 +10,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class AppService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
-    private _films: Promise<{[id: number]: FilmInfoI}>;
+    private _films: Promise<{ [id: number]: FilmInfoI }>;
     private _tickets!: Promise<Ticket[]>;
 
     //private tickets!: Ticket[];
@@ -26,13 +26,13 @@ export class AppService {
 
 
         this._films = resultAsPromise.then((dati: FilmInfoI[]) => {
-           const result: {[id: number]: FilmInfoI}= {};
+            const result: { [id: number]: FilmInfoI } = {};
             for (let film of dati) {
-              result[film.id] = film;
+                result[film.id] = film;
             }
             //console.log(result);
             return result;
-          })
+        })
     }
 
     /*loadFilm(): FilmInfoI[] {
@@ -49,63 +49,66 @@ export class AppService {
 
         return film;
     }*/
-    loadTicketByUserId(userId:number){
+    loadTicketByUserId(userId: number) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        console.log("url: "+this.basePath + '/payment/tickets/'+userId);
+        console.log("url: " + this.basePath + '/payment/tickets/' + userId);
 
-        const result=this.http.get<Ticket[]>(this.basePath + '/payment/tickets/'+userId, { headers: headers });
+        const result = this.http.get<Ticket[]>(this.basePath + '/payment/tickets/' + userId, { headers: headers });
 
         const resultAsPromise = lastValueFrom<Ticket[]>(result);
 
 
         this._tickets = resultAsPromise.then((dati: Ticket[]) => {
-           const result : Ticket[]= [];
+            const result: Ticket[] = [];
             for (let ticket of dati) {
-              result.push(ticket);
+                result.push(ticket);
             }
             //console.log(result);
             return result;
-          })
+        })
 
-          return this._tickets;
+        return this._tickets;
     }
 
-    buyTicket(userId:number,filmId:number,numeroPersone:number,dataOra:string,pagato:boolean,posti:string){
+    buyTicket(userId: number, filmId: number, numeroPersone: number, dataOra: string, pagato: boolean, posti: string) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        const body = { userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato:pagato ,posti:posti };
-    
-        console.log("url: "+this.basePath + '/payment/ticket/buy'+ "\n" + "body: "+JSON.stringify(body));
+        const body = { userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato: pagato, posti: posti };
 
-        return this.http.post<Ticket>(this.basePath+ '/payment/ticket/buy',JSON.stringify(body), { headers: headers });
+        console.log("url: " + this.basePath + '/payment/ticket/buy' + "\n" + "body: " + JSON.stringify(body));
+
+        return this.http.post<Ticket>(this.basePath + '/payment/ticket/buy', JSON.stringify(body), { headers: headers });
 
     }
 
-    openOnSuccessLogin(message:string) {
+    openOnSuccessLogin(message: string) {
         this.toast.success({ detail: 'success', summary: message, position: 'tr', duration: 1000 });
-      }
-      openOnFailLogin(message:string) {
+    }
+    openOnFailLogin(message: string) {
         this.toast.error({ detail: 'Error', summary: message, position: 'tr', duration: 1000 });
-      }
+    }
+    openOnInfo(message:string,duration:number){
+        this.toast.info({ detail: 'Info', summary: message, position: 'tr', duration: duration });
+    }
 
     get films(): Promise<FilmInfoI[]> {
         return this._films.then((dati) => {
             return Object.values(dati);
-          });
+        });
 
     }
 
     get tickets(): Promise<Ticket[]> {
         return this._tickets.then((dati) => {
             return Object.values(dati);
-          });
+        });
 
     }
 }
