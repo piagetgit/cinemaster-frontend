@@ -21,7 +21,11 @@ export class SignUpComponent {
 
   signup(event: MouseEvent) {
     event.preventDefault();
-    this.appStateService.registration(this.email,this.password,this.name,this.surname,this.birthdate).subscribe((data: UserSignUpResponse | null) => {
+    if(this.email.length===0 ||this.name.length===0 || this.password.length===0 || this.surname.length===0 || this.birthdate.length===0){
+      this.appService.openOnFailLogin("Empty fields are not allowed");
+      this.appStateService.changeView('signup');
+    }else{
+      this.appStateService.registration(this.email,this.password,this.name,this.surname,this.birthdate).subscribe((data: UserSignUpResponse | null) => {
       if (data !== null) {
           if (data.code === "2002"){
             this.appService.openOnSuccessLogin("SignUp Success");
@@ -33,6 +37,8 @@ export class SignUpComponent {
         this.appStateService.changeView('home');
 
     })
+    }
+    
   }
 
   updateName(event: Event) {
