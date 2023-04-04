@@ -38,7 +38,7 @@ export class TicketsComponent implements OnInit {
   buy(event: MouseEvent) {
     event.preventDefault();
     let id = this.films?.filter(f=>f.titolo === this.titolo)[0].id;
-    this.appService.buyTicket(this.appStateService.userLogged.id,id!, Number(this.nSeats), '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
+    this.appService.buyTicket(this.appStateService.userLogged.id,id!, Number(this.nSeats),this.film.prezzo, '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
       console.log(data);
       if (data !== null){
         this.appStateService.changeView('movies');

@@ -69,13 +69,21 @@ export class AppService {
         return this._tickets;*/
     }
 
-    buyTicket(userId: number, filmId: number, numeroPersone: number, dataOra: string, pagato: boolean, posti: string) {
+    buyTicket(userId: number, filmId: number, numeroPersone: number,prezzo:number, dataOra: string, pagato: boolean, posti: string) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        const body = { userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato: pagato, posti: posti };
+        let posto = Number(Math.random().toString().substring(3,4));
+        let generatePosti=posto.toString();
+
+        for(let i=1;i<numeroPersone;i++){
+           posto=posto+1;
+           generatePosti+=","+posto;
+        }
+        
+        const body = { prezzoTotale:prezzo*numeroPersone,userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato: pagato, posti: generatePosti };
 
         console.log("url: " + this.basePath + '/payment/ticket/buy' + "\n" + "body: " + JSON.stringify(body));
 
