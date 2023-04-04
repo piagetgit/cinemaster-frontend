@@ -1,149 +1,36 @@
-<h2 class="collection-title">Film</h2>
+<h2 class="collection-title"><i class="fas fa-video" style="color: #ccc62e;"></i>&nbsp;&nbsp;Film attualmente in sala&nbsp;&nbsp;<i class="fas fa-video fa-rotate-180" style="color: #ccc62e;"></i></h2>
 
 <section class="cards">
     <ng-container *ngFor="let film of films, let pos = index">
-        <div class="card">
+        <div class="card" (click)="toTicket(film)">
+          <p class="card__cat">
+            {{film.categoria}}
+          </p>
             <div class="card__image-container">
-                <img
-                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
+              <img
+                src='/assets/images/{{film.img}}' />
+
+
             </div>
             <div class="card__content">
+              <p class="card__title text--medium">
+                {{film.titolo}}
+                <i class="fas fa-star" style="color: #ffea00;"></i>
+                <i class="fas fa-star" style="color: #ffea00;"></i>
+                <i class="fas fa-star" style="color: #ffea00;"></i>
+                <i class="fas fa-star" style="color: #ffea00;"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star-half-alt" style="color: #ffea00;"></i>
+                <i class="fas fa-star-half" style="color: #ffea00;"></i></p>
                 <p class="card__title text--medium">
                     {{film.descrizione}}
                 </p>
                 <div class="card__info">
-                    <p class="text--medium"> {{film.durata}} Min</p>
-                    <p class="card__price text--medium">  {{film.prezzo}} €</p>
+                    <p class="text--medium"><i class="far fa-clock"></i>&nbsp; {{film.durata}} Min</p>
+                    <p class="card__price text--medium"><i class="fas fa-tag"></i>&nbsp;  {{film.prezzo}} €</p>
                 </div>
             </div>
         </div>
     </ng-container>
-    <!--<div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1473283147055-e39c51463929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1482784160316-6eb046863ece?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1470104240373-bc1812eddc9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1534143046043-44af3469836b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__image-container">
-        <img
-          src="https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"
-        />
-      </div>
-      <div class="card__content">
-        <p class="card__title text--medium">
-          Here's the Title of an Awesome Course
-        </p>
-        <div class="card__info">
-          <p class="text--medium">30 Min</p>
-          <p class="card__price text--medium">Free</p>
-        </div>
-      </div>
-    </div>-->
+
 </section>

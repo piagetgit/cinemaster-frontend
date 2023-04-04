@@ -14,7 +14,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import {NgToastModule} from 'ng-angular-popup';
+import {NgToastModule} from "ng-angular-popup";
+import { PresentationComponent } from './presentation/presentation.component';
+import { TicketsComponent } from './tickets/tickets.component';
+import {SignUpComponent} from "./sign-up/sign-up.component";
+import { HomeComponent } from './home/home.component';
+import { CarouselModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import {NgToastModule} from 'ng-angular-popup';
     MenuComponent,
     FilmCollectionComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    SignUpComponent,
+    PresentationComponent,
+    TicketsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,8 @@ import {NgToastModule} from 'ng-angular-popup';
     MatGridListModule,
     HttpClientModule,
     MatCardModule,
-    NgToastModule
+    NgToastModule,
+    CarouselModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

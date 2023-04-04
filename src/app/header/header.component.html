@@ -1,11 +1,10 @@
 <a href="index.html"><img class="logo" src="assets/logo1.png"></a>
 
 <div class="user-logins">
-    <button *ngIf="userLogged.length===0" mat-raised-button color="primary" (click)="changeView($event,'signin')">SignIn</button>
-    <button *ngIf="userLogged.length===0" mat-raised-button color="primary">SignUp</button>
-    <div *ngIf="userLogged.length>0">
-        <span  class="material-icons-outlined">  {{userLogged}}    </span>
-    </div>
-    
-    <button *ngIf="userLogged.length>0" mat-raised-button color="primary" (click)="changeView($event,'')">LogOut</button>
+    <button *ngIf="userLogged.length===0" mat-raised-button color="primary" (click)="changeView($event,'signin')"><i class="fas fa-user"></i>&nbsp;&nbsp;SignIn</button>
+    <button *ngIf="userLogged.length===0" mat-raised-button color="primary" (click)="changeView($event,'signup')"><i class="fas fa-envelope"></i>&nbsp;&nbsp;SignUp</button>
+  <div *ngIf="userLogged.length>0">
+    <button mat-raised-button color="primary" (click)="changeView($event,'user')"><span  class="material-icons-outlined" style="color: white"> Logged as  {{userLogged}}    <i class="far fa-hand-spock"></i></span></button>
+  </div>
+    <button *ngIf="userLogged.length>0" mat-raised-button color="primary"  (click)="changeView($event,'')"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;LogOut</button>
 </div>

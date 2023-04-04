@@ -1,13 +1,17 @@
 :host {
-  grid-row-start: top-bar;
-  grid-row-end: v-center-top;
-  grid-column-start: left-col;
-  grid-column-end: end;
-  background-color: rgb(220, 220, 220);
+  /* grid-row-start: top-bar;
+ grid-row-end: v-center-top;
+  */
+  height:70px;
+ /* margin-top:-40px;
+  margin-bottom:100px;
+  */ grid-column-start: left-col;
+   grid-column-end: end;
+   background-color: #2a2525;
   display: flex;
-  padding: 10px;
+  padding-right: 10px;
   justify-content: space-between;
-  align-items: center;
+ align-items: center;
 }
 
 .user-logins {
@@ -37,7 +41,8 @@
 
 
 .logo {
-  width: 80px;
-  height: 80px;
-  margin-left: 30px;
+  width: 200px;
+  /* height: 60px;
+
+   margin-left: 10px;*/
 }

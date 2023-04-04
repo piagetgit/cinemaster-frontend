@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { AppStateService } from '../services/app-state.service';
 
@@ -9,18 +9,31 @@ import { AppStateService } from '../services/app-state.service';
 })
 export class MenuComponent implements OnInit {
   view!: string;
+  userLogged!: string;
 
-  constructor(private appServ: AppStateService) {
-    this.view = this.appServ.currentView;
+  constructor(private appStateService: AppStateService) {
+    this.view = this.appStateService.currentView;
   }
 
-  ngOnInit(): void {
-    this.appServ.observe("view", (view: string) => {
+  ngOnInit() {
+    console.log("Menu init");
+    this.appStateService.observe("view", (view: string) => {
       this.view = view;
     });
+    this.appStateService.observe("login", (userId: string) => {
+      this.userLogged = userId;
+      console.log("header: " + this.userLogged);
+    });
+    
+    if (this.appStateService.userLogged != null) {
+      this.userLogged = this.appStateService.userLogged.nome;
+    } else {
+      this.userLogged = "";
+    }
+
   }
 
-  goTo(where: "home" | "user" | "film" | "tickets") {
-    this.appServ.currentView = where;
+  goTo(where: "home" | "user" | "film" | "tickets" | "presentation" | "movies") {
+    this.appStateService.changeView(where);
   }
 }

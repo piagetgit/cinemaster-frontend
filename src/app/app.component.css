@@ -1,10 +1,48 @@
 :host {
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    display: grid;
-    grid-template-columns: [left-col] 200px [h-center] auto [h2-center] 150px [end];
-    grid-template-rows: [top-bar] 100px [v-center-top] 6fr [v-center-bot] 4fr [footer] 40px [end];
-  }
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: [left-col] 200px [h-center] auto [h2-center] 150px [end];
+  grid-template-rows: [top-bar] 71px [v-center-top] 6fr [v-center-bot] 4fr [footer] 40px [end];
+  background-color: #02023d;
+  color: #7bc7ff;
+
+}
+
+.form {
+  width: 60%;
+  margin-top: 10px;
+}
+
+.form2 {
+  padding: 45px 20px 28px 20px;
+  margin-top: 10px;
+  border: #2e6acc solid;
+  background-color: #02023d;
+  border-radius: 10px;
+}
+
+
+
+#email {
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+#buy {
+  width: 50%;
+  margin-top: 50px;
+  background-color: #00da27;
+}
+
+#buy:hover {
+  margin-top: 50px;
+  background-color: #2efc00;
+}
+
+#password {
+  margin-top: 10px;
+}

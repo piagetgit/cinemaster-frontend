@@ -1,0 +1,38 @@
+:host {
+  grid-row-start: v-center-top;
+  grid-row-end: footer;
+  grid-column-start: h-center;
+  grid-column-end: end;
+  background-color: #14144b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+img {
+  size: letter;
+  margin-top: 40px;
+  opacity: 80%;
+}
+
+p {
+  padding: 20px;
+font-family: Bahnschrift;
+  margin-top: 10px;
+  color: #fff31b;
+  font-size: 17px;
+  line-height: 25px;
+}
+
+blockquote > p {
+  margin-top: 5px;
+  font-family: "Book Antiqua";
+  text-align: end;
+}
+
+blockquote > em {
+  color: #fff200;
+}

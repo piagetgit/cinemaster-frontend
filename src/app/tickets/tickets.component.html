@@ -1,0 +1,15 @@
+<div class="form">
+  <div class="form2">
+  <form class="container text-center">
+    <div class="form-group">
+      <label  style="margin-top: 0px;margin-bottom: 20px;"><i class="fas fa-film"></i>  Film name</label>
+      <input type="text" class="form-control"  placeholder="Enter film name" [value]="titolo">
+    </div>
+    <div class="form-group" id="nSeats">
+      <label  style="margin-top: 30px;margin-bottom: 20px;"><i class="fas fa-boxes"></i>  Number of seats</label>
+      <input type="number" class="form-control"  placeholder="How many places?" min="1" max="100" [value]="nSeats" (change)="addSeats($event)">
+    </div>
+    <button id="buy" mat-raised-button (click)="buy($event)">Buy  <i class="fas fa-shopping-cart"></i></button>
+  </form>
+</div>
+</div>
