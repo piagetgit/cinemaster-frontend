@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserInfoI } from "../interface/userLoginResponse";
 import {Ticket} from "../interface/ticket";
 import {AppService} from "../services/app.service";
-import {FilmInfoI} from "../interface/film";
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -14,20 +13,16 @@ export class UserProfileComponent implements OnInit{
   userLogged!: string;
   tickets!:Ticket[];
 
-  films!:FilmInfoI[] | null;
+  films:any[]=[];
 
   constructor(private appService:AppService,private appStateService:AppStateService){
-
+  
   }
   ngOnInit() {
     console.log("user profile  init");
-    this.appService.films.then((films)=>{
-      this.films=films;
-    });
-    
     this.user = this.appStateService.userLogged;
-
-
+   
+   
     this.appService.loadTicketByUserId(this.appStateService.userLogged.id).subscribe((tickets)=>{
       if(tickets !== null){
         this.tickets = tickets.sort((t1,t2)=>{
@@ -38,6 +33,11 @@ export class UserProfileComponent implements OnInit{
         })
       }
     });
+
+    this.appService.loadedFilm.forEach(film => {
+      this.films[film.id] = film;
+    });
+    console.log("films: "+ JSON.stringify(this.films));
 
   }
 

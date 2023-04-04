@@ -21,8 +21,9 @@ export class TicketsComponent implements OnInit {
 
   ngOnInit() {
     console.log("init ticket component")
-    this.appService.films.then((films) => {
-      this.films = films;
+    this.appService.loadFilm().subscribe((films) => {
+      if (films != null)
+        this.films = films;
     });
 
     this.titolo = this.appStateService.filmToPay.titolo;
@@ -32,12 +33,12 @@ export class TicketsComponent implements OnInit {
 
   addSeats(event: Event) {
     this.nSeats = (event.target as HTMLInputElement).value;
-    const posti = parseInt(this.nSeats, 10);
   }
 
   buy(event: MouseEvent) {
     event.preventDefault();
-    this.appService.buyTicket(this.appStateService.userLogged.id, this.film.id, Number(this.nSeats), '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
+    let id = this.films?.filter(f=>f.titolo === this.titolo)[0].id;
+    this.appService.buyTicket(this.appStateService.userLogged.id,id!, Number(this.nSeats), '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
       console.log(data);
       if (data !== null){
         this.appStateService.changeView('movies');

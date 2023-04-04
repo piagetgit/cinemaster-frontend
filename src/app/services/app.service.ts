@@ -10,6 +10,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class AppService {
     basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    loadedFilm! : FilmInfoI[]
     private _films: Promise<{ [id: number]: FilmInfoI }>;
     private _tickets!: Promise<Ticket[]>;
 
@@ -35,20 +36,14 @@ export class AppService {
         })
     }
 
-    /*loadFilm(): FilmInfoI[] {
-        let film: any[] = [];
+    loadFilm() {
         const headers = new HttpHeaders({
             'Accept': 'application/json',
             'Content-type': 'application/json'
         });
 
-        this.http.get<FilmInfoI[]>(this.basePath + '/films', { headers: headers }).subscribe(data => {
-            //console.log(data);
-            film = data;
-        });
-
-        return film;
-    }*/
+        return this.http.get<FilmInfoI[] | null >(this.basePath + '/films', { headers: headers });
+    }
     loadTicketByUserId(userId: number) {
         const headers = new HttpHeaders({
             'Accept': 'application/json',

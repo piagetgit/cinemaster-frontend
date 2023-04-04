@@ -15,7 +15,6 @@ export class AppStateService {
     filmToPay!:FilmInfoI;
 
     private observers: { [evento: string]: ((e: string) => void)[] };
-    //private _users: Promise<{[id: number]: UserInfoI}>;
 
 
     constructor(private http: HttpClient) {
@@ -40,7 +39,6 @@ export class AppStateService {
         for (let callback of this.observers["view"]) {
             callback(view);
         }
-        //console.log(view);
     }
 
     logout(){

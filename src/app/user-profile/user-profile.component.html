@@ -16,7 +16,7 @@
   </div>
 
   <h2 style="margin-top: 30px;margin-bottom: 20px;">La tua lista acquisti</h2>
-  <div *ngIf="tickets!=undefined && tickets.length>0" style="padding: 30px;margin-left: 130px;">
+  <div *ngIf="tickets!==undefined && tickets!==null && tickets.length>0" style="padding: 30px;margin-left: 130px;">
     <div class="card__info22">
 
       <i style="width: 171px;position: center;margin-left: 1px">Titolo</i>
@@ -32,10 +32,9 @@
       <div>
         <div class="card__info">
           <div class="circular--landscape">
-            <img src='/assets/images/{{films![ticket.filmId].img}}' />
-
+            <img src='/assets/images/{{films[ticket.filmId].img}}' />
           </div>
-          <i style="width: 171px;position: center;margin-left: 30px">{{films![ticket.filmId].titolo}}</i>
+          <i style="width: 171px;position: center;margin-left: 30px">{{films[ticket.filmId].titolo}}</i>
 
           <i style="width: 317px;position: center">{{ticket.dataOra | date:'medium'}}</i>
 

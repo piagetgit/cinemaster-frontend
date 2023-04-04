@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit{
   ngOnInit() {
     this.appService.films.then((films)=>{
       this.films = [...films];
+      this.appService.loadedFilm=[...films];
       //this.films.forEach((f)=> f.img="/assets/images/"+f.img);
     });
   }
