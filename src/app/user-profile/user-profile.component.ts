@@ -22,7 +22,6 @@ export class UserProfileComponent implements OnInit{
     console.log("user profile  init");
     this.user = this.appStateService.userLogged;
    
-   
     this.appService.loadTicketByUserId(this.appStateService.userLogged.id).subscribe((tickets)=>{
       if(tickets !== null){
         this.tickets = tickets.sort((t1,t2)=>{

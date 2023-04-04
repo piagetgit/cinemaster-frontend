@@ -1,3 +1,4 @@
+import { FilmCollectionComponent } from './../film-collection/film-collection.component';
 import { Ticket } from './../interface/ticket';
 import { FilmInfoI } from '../interface/film';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,8 +14,6 @@ export class AppService {
     loadedFilm! : FilmInfoI[]
     private _films: Promise<{ [id: number]: FilmInfoI }>;
     private _tickets!: Promise<Ticket[]>;
-
-    //private tickets!: Ticket[];
 
     constructor(private http: HttpClient, private toast: NgToastService) {
         const headers = new HttpHeaders({
@@ -54,19 +53,6 @@ export class AppService {
 
         return this.http.get<Ticket[] | null >(this.basePath + '/payment/tickets/' + userId, { headers: headers });
 
-       /* const resultAsPromise = lastValueFrom<Ticket[]>(result);
-
-
-        this._tickets = resultAsPromise.then((dati: Ticket[]) => {
-            const result: Ticket[] = [];
-            for (let ticket of dati) {
-                result.push(ticket);
-            }
-            //console.log(result);
-            return result;
-        })
-
-        return this._tickets;*/
     }
 
     buyTicket(userId: number, filmId: number, numeroPersone: number,prezzo:number, dataOra: string, pagato: boolean, posti: string) {

@@ -15,20 +15,6 @@
   background-blend-mode: overlay;
 
 }
-  /*.collection-content {
-    max-width: 800px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: min-content;
-    grid-gap: 10px;
-}
-
-.collection-content > li {
-    list-style-type: none;
-    background-color: rgb(230, 230, 230);
-    padding: 30px;
-}*/
 
 .collection-title {
   font-family: "Bradley Hand ITC";
@@ -41,24 +27,6 @@
     padding: 10px;
     align-self: stretch;
 }
-/*
-.collection {
-    grid-row-start: v-center-top;
-    grid-row-end: v-center-bot;
-    grid-column-start: h-center;
-    grid-column-end: end;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: scroll;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}*/
 
 
 .text--medium {
