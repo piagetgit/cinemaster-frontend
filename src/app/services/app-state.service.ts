@@ -1,7 +1,7 @@
 import { FilmInfoI } from './../interface/film';
 import { UserSignUpResponse } from './../interface/userSignupResponse';
 import { UserInfoI } from './../interface/userLoginResponse';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders ,HttpResponse,HttpErrorResponse ,HttpHeaderResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core'
 import { lastValueFrom } from 'rxjs';
 
@@ -9,7 +9,8 @@ import { lastValueFrom } from 'rxjs';
     providedIn: 'root'
 })
 export class AppStateService {
-    private basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    //private basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    private basePath: string = "http://localhost/CineMasterBackendPHP/api_server/api"
     private _userLogged!: UserInfoI | null;
     private _currentView;
     filmToPay!:FilmInfoI;
@@ -70,12 +71,16 @@ export class AppStateService {
 
     login(email:string,password:string) {
         const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
+            /*'Accept': 'application/json',
+            'Content-type': 'application/json'*/
         });
 
-        const body = { id: email, logPassword: password };
-        return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
+        //const body = { id: email, logPassword: password };
+        const body = { email: email, password: password };
+        //return this.http.post<UserInfoI | null>(this.basePath + '/user/login', JSON.stringify(body), { headers: headers });
+        //return this.http.post<UserInfoI | null |undefined>(this.basePath+"/signin.php", JSON.stringify(body), { headers: headers });
+        return this.http.post(this.basePath+"/signin.php", JSON.stringify(body), { observe: 'response' });
+    
     }
 
     registration(email:string,password:string,nome:string,cognome:string,dataNascita:string){
