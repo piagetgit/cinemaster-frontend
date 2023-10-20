@@ -85,11 +85,12 @@ export class AppStateService {
 
     registration(email:string,password:string,nome:string,cognome:string,dataNascita:string){
       const headers = new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
+        /*'Accept': 'application/json',
+        'Content-type': 'application/json'*/
       });
-      const body = { nome: nome, cognome: cognome, email: email, password: password, dataNascita: Date.parse(dataNascita) ,ruolo:'utente' };
-      return this.http.post<UserSignUpResponse | null>(this.basePath + '/user/signup', JSON.stringify(body), {headers: headers});
+      const body = { first_name: nome, surname: cognome, email: email, password: password, date_of_birth: dataNascita ,role:'utente' };
+      console.log(JSON.stringify(body));
+      return this.http.post<UserSignUpResponse | null>(this.basePath + '/signup.php', JSON.stringify(body), {headers: headers});
     }
 
     updateView(id:string) {

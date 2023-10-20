@@ -1,13 +1,13 @@
 export interface FilmInfoI {
-  categoria: string;
-  dataUscita: string;
-  descrizione: string;
-  durata: string;
+  category: string;
+  publish_date: string;
+  description: string;
+  duration: string;
   citazione: string;
   id: number;
-  prezzo:number;
+  price:number;
   regista:string;
-  titolo:string;
+  title:string;
   img: string;
 
 }

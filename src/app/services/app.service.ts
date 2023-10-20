@@ -10,7 +10,8 @@ import { NgToastService } from 'ng-angular-popup';
     providedIn: 'root'
 })
 export class AppService {
-    basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    //basePath: string = "http://localhost:8080/api/v1/cinemaster";
+    basePath: string = "http://localhost/CineMasterBackendPHP/api_server/api"
     loadedFilm! : FilmInfoI[]
     private _films: Promise<{ [id: number]: FilmInfoI }>;
     private _tickets!: Promise<Ticket[]>;
@@ -21,7 +22,7 @@ export class AppService {
             'Content-type': 'application/json'
         });
 
-        const result = this.http.get<FilmInfoI[]>(this.basePath + '/films', { headers: headers });
+        const result = this.http.get<FilmInfoI[]>(this.basePath + '/get_film.php', { headers: headers });
         const resultAsPromise = lastValueFrom<FilmInfoI[]>(result);
 
 
@@ -30,7 +31,7 @@ export class AppService {
             for (let film of dati) {
                 result[film.id] = film;
             }
-            //console.log(result);
+            console.log(result);
             return result;
         })
     }
