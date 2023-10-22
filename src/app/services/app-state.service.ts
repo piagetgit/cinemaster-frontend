@@ -90,7 +90,7 @@ export class AppStateService {
       });
       const body = { first_name: nome, surname: cognome, email: email, password: password, date_of_birth: dataNascita ,role:'utente' };
       console.log(JSON.stringify(body));
-      return this.http.post<UserSignUpResponse | null>(this.basePath + '/signup.php', JSON.stringify(body), {headers: headers});
+      return this.http.post(this.basePath + '/signup.php', JSON.stringify(body),{ observe: 'response' });
     }
 
     updateView(id:string) {

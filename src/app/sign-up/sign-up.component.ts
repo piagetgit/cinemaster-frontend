@@ -19,7 +19,7 @@ export class SignUpComponent {
   constructor(private appStateService:AppStateService,private appService: AppService) {
   }
 
-  signup(event: MouseEvent) {
+  /*signup(event: MouseEvent) {
     event.preventDefault();
     if(this.email.length===0 ||this.name.length===0 || this.password.length===0 || this.surname.length===0 || this.birthdate.length===0){
       this.appService.openOnFailLogin("Empty fields are not allowed");
@@ -39,6 +39,41 @@ export class SignUpComponent {
     })
     }
     
+  }*/
+
+  signup(event: MouseEvent) {
+    event.preventDefault();
+    if(this.email.length===0 ||this.name.length===0 || this.password.length===0 || this.surname.length===0 || this.birthdate.length===0){
+      this.appService.openOnFailLogin("Empty fields are not allowed");
+      this.appStateService.changeView('signup');
+    }else{
+      this.appStateService.registration(this.email,this.password,this.name,this.surname,this.birthdate).subscribe(response => {
+        console.log('Response:', response.body);
+        let data = JSON.parse(JSON.stringify(response.body));
+        //console.log("ecco "+ JSON.stringify(data));
+        if (data !== null && data !== undefined)  {
+          this.useregistred = {
+            message: data.message,
+            code: data.code
+          }
+          if (this.useregistred.code === "2002"){
+            this.appService.openOnSuccessLogin("SignUp Success");
+          }
+          else if (this.useregistred.code === "4004"){
+            this.appService.openOnFailLogin(data.message);
+          }
+        }
+        else {
+          this.appService.openOnFailLogin("Check your email and Password");
+        }
+      },
+      error =>{
+        console.error('Error:', error);
+        //this.errorMessage = error.error;
+        this.appService.openOnFailLogin(error.error.message);
+      })
+    
+     }
   }
 
   updateName(event: Event) {
