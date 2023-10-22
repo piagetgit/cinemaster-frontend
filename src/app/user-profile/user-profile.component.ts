@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit{
    
     this.appService.loadTicketByUserId(this.appStateService.userLogged.id).subscribe((tickets)=>{
       if(tickets !== null){
+        console.log("ticket:",typeof(tickets));
         this.tickets = tickets.sort((t1,t2)=>{
           if (t1.dataOra<t2.dataOra)
             return -1

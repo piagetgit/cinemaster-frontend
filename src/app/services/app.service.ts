@@ -38,11 +38,11 @@ export class AppService {
 
     loadFilm() {
         const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
+            /*'Accept': 'application/json',
+            'Content-type': 'application/json'*/
         });
 
-        return this.http.get<FilmInfoI[] | null >(this.basePath + '/films', { headers: headers });
+        return this.http.get<FilmInfoI[] | null >(this.basePath + '/get_film.php', { headers: headers });
     }
     loadTicketByUserId(userId: number) {
         const headers = new HttpHeaders({
@@ -52,14 +52,14 @@ export class AppService {
 
         console.log("url: " + this.basePath + '/payment/tickets/' + userId);
 
-        return this.http.get<Ticket[] | null >(this.basePath + '/payment/tickets/' + userId, { headers: headers });
+        return this.http.get<Ticket[] | null >(this.basePath + '/read_ticket_by_user.php?userId=' + userId, { headers: headers });
 
     }
 
     buyTicket(userId: number, filmId: number, numeroPersone: number,prezzo:number, dataOra: string, pagato: boolean, posti: string) {
         const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
+            /*'Accept': 'application/json',
+            'Content-type': 'application/json'*/
         });
 
         let posto = Number(Math.random().toString().substring(3,4));
@@ -70,11 +70,11 @@ export class AppService {
            generatePosti+=","+posto;
         }
         
-        const body = { prezzoTotale:prezzo*numeroPersone,userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: Date.parse(dataOra), pagato: pagato, posti: generatePosti };
+        const body = { prezzoTotale:prezzo*numeroPersone,userId: userId, filmId: filmId, numeroPersone: numeroPersone, dataOra: dataOra, pagato: pagato, posti: generatePosti ,numeroRidotti:1};
 
-        console.log("url: " + this.basePath + '/payment/ticket/buy' + "\n" + "body: " + JSON.stringify(body));
+        //console.log("url: " + this.basePath + '/payment/ticket/buy' + "\n" + "body: " + JSON.stringify(body));
 
-        return this.http.post<Ticket>(this.basePath + '/payment/ticket/buy', JSON.stringify(body), { headers: headers });
+        return this.http.post<Ticket>(this.basePath + '/buy_ticket.php', JSON.stringify(body), { headers: headers });
 
     }
 
