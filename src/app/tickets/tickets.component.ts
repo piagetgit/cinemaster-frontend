@@ -14,6 +14,7 @@ export class TicketsComponent implements OnInit {
   film!: FilmInfoI;
   titolo!: string;
   nSeats!: string;
+  showDate!: string;
 
   constructor(private appService: AppService, private appStateService: AppStateService) {
 
@@ -38,12 +39,16 @@ export class TicketsComponent implements OnInit {
   buy(event: MouseEvent) {
     event.preventDefault();
     let id = this.films?.filter(f=>f.title === this.titolo)[0].id;
-    this.appService.buyTicket(this.appStateService.userLogged.id,id!, Number(this.nSeats),this.film.price, '2023-04-04T20:00:00', true, "R8").subscribe((data) => {
+    this.appService.buyTicket(this.appStateService.userLogged.id,id!, Number(this.nSeats),this.film.price, this.showDate, true, "R8").subscribe((data) => {
       console.log(data);
       if (data !== null){
         this.appStateService.changeView('movies');
         this.appService.openOnSuccessLogin('Success');
       }
     })
+  }
+
+  updateShowDate(event: Event) {
+    this.showDate = (event.target as HTMLInputElement).value;
   }
 }
