@@ -16,17 +16,17 @@ export class UserProfileComponent implements OnInit{
   films:any[]=[];
 
   constructor(private appService:AppService,private appStateService:AppStateService){
-  
+
   }
   ngOnInit() {
     console.log("user profile  init");
     this.user = this.appStateService.userLogged;
-   
+
     this.appService.loadTicketByUserId(this.appStateService.userLogged.id).subscribe((tickets)=>{
       if(tickets !== null){
         console.log("ticket:",typeof(tickets));
         this.tickets = tickets.sort((t1,t2)=>{
-          if (t1.dataOra<t2.dataOra)
+          if (t1.dataOra>t2.dataOra)
             return -1
           else
             return 1
