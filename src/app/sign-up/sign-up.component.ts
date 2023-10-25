@@ -38,7 +38,7 @@ export class SignUpComponent {
 
     })
     }
-    
+
   }*/
 
   signup(event: MouseEvent) {
@@ -57,6 +57,7 @@ export class SignUpComponent {
             code: data.code
           }
           if (this.useregistred.code === "2002"){
+            this.appStateService.changeView('home');
             this.appService.openOnSuccessLogin("SignUp Success");
           }
           else if (this.useregistred.code === "4004"){
@@ -72,7 +73,7 @@ export class SignUpComponent {
         //this.errorMessage = error.error;
         this.appService.openOnFailLogin(error.error.message);
       })
-    
+
      }
   }
 
