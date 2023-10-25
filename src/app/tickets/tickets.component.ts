@@ -48,7 +48,7 @@ export class TicketsComponent implements OnInit {
     })
   }
 
-  updateShowDate(event: Event) {
+  updateShowdate(event: Event) {
     this.showDate = (event.target as HTMLInputElement).value;
   }
 }
